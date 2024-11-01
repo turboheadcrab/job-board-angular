@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ClarityModule, ClrNavigationModule } from '@clr/angular';
 
 import { HeaderComponent } from './core/component/header/header.component';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     ClarityModule,
     RouterLink,
     RouterLinkActive,
+    RouterOutlet,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

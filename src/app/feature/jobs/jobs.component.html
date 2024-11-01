@@ -1,1 +1,8 @@
-<p>jobs works!</p>
+<h2>Current Job Openings</h2>
+<div cds-layout="grid cols@md:4 gap:md">
+  @for (job of jobs(); track job.id) {
+    <div cds-layout="col">
+      <p>Job with ID: {{ job.id }}</p>
+    </div>
+  }
+</div>
