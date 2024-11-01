@@ -6,4 +6,30 @@
   <p><strong>Date Posted:</strong> {{ job.datePosted | date }}</p>
   <p><strong>Description:</strong></p>
   <p>{{ job.description }}</p>
+
+  @if (job.responsibilities.length > 0) {
+    <p><strong>Responsibilities:</strong></p>
+    <ul>
+      @for (responsibility of job.responsibilities; track $index) {
+        <li>
+          {{ responsibility }}
+        </li>
+      }
+    </ul>
+  }
+
+  @if (job.qualifications.length > 0) {
+    <p><strong>Qualifications:</strong></p>
+    <ul>
+      @for (qualification of job.qualifications; track $index) {
+        <li>
+          {{ qualification }}
+        </li>
+      }
+    </ul>
+  }
+
+  <button class="btn btn-primary" (click)="applyForJob()">Apply Now</button>
+} @else {
+  <p>Job not found.</p>
 }
