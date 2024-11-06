@@ -24,3 +24,28 @@
     </main>
   </div>
 </clr-main-container>
+<p>Current theme: {{ getPreferredTheme() }}</p>
+<button
+  type="button"
+  class="btn btn-icon"
+  (click)="setPreferredTheme(ThemePreference.Light)"
+>
+  <cds-icon shape="moon" />
+  Light
+</button>
+<button
+  type="button"
+  class="btn btn-icon"
+  (click)="setPreferredTheme(ThemePreference.Dark)"
+>
+  <cds-icon shape="moon" />
+  Dark
+</button>
+<button
+  type="button"
+  class="btn btn-icon"
+  (click)="setPreferredTheme(ThemePreference.System)"
+>
+  <cds-icon shape="moon" />
+  System
+</button>
