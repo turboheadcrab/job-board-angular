@@ -1,31 +1,35 @@
-import { Component, inject, signal } from '@angular/core';
-import { Job } from '../../../shared/model/job.model';
-import { JobService } from '../../../core/service/job.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, inject, input, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
+import { switchMap, tap } from 'rxjs';
+
+import type { Job } from '../../../shared/model/job.model';
+import { JobService } from '../../../core/service/job.service';
 
 @Component({
   selector: 'app-job-details',
   standalone: true,
-  imports: [DatePipe],
+  imports: [DatePipe, RouterLink],
   templateUrl: './job-details.component.html',
   styleUrl: './job-details.component.scss',
 })
 export class JobDetailsComponent {
   #jobService = inject(JobService);
-  #activatedRoute = inject(ActivatedRoute);
-  #router = inject(Router);
+
+  id = input.required<string>();
 
   job = signal<Job | undefined>(undefined);
 
   constructor() {
-    const jobId = +this.#activatedRoute.snapshot.params['id'];
-    this.job.set(this.#jobService.getJob(jobId));
-  }
-
-  applyForJob() {
-    if (this.job()) {
-      this.#router.navigate(['/jobs', this.job()?.id, 'apply']);
-    }
+    toObservable(this.id)
+      .pipe(
+        switchMap((id: string) => this.#jobService.getJob(Number(id))),
+        tap({
+          next: (job: Job) => this.job.set(job),
+        }),
+        takeUntilDestroyed(),
+      )
+      .subscribe();
   }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Job } from '../../shared/model/job.model';
 import { JOBS } from '../../shared/data/job-data';
+import { Observable, of, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,15 +9,17 @@ import { JOBS } from '../../shared/data/job-data';
 export class JobService {
   #jobs: Job[] = JOBS;
 
-  getJobs(): Job[] {
-    return this.#jobs;
+  getJobs(): Observable<Job[]> {
+    return of(this.#jobs);
   }
 
-  getJob(id: number): Job {
-    const foundJob = this.#jobs.find((job) => job.id === id);
+  getJob(id: number): Observable<Job> {
+    const foundJob: Job | undefined = this.#jobs.find(
+      (job: Job) => job.id === id,
+    );
     if (!foundJob) {
-      throw new Error('Job not found');
+      return throwError(() => new Error(`Job with id ${id} not found`));
     }
-    return foundJob;
+    return of(foundJob);
   }
 }

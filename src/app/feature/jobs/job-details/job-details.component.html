@@ -29,7 +29,12 @@
     </ul>
   }
 
-  <button class="btn btn-primary" (click)="applyForJob()">Apply Now</button>
+  <button
+    class="btn btn-primary"
+    [routerLink]="['/jobs', id(), 'apply']"
+  >
+    Apply Now
+  </button>
 } @else {
   <p>Job not found.</p>
 }

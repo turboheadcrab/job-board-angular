@@ -1,13 +1,6 @@
 <h2>Current Job Openings</h2>
 <div cds-layout="grid cols@md:4 gap:md">
   @for (job of jobs(); track job.id) {
-    <div cds-layout="col">
-      <h3>{{ job.title }}</h3>
-      <small>{{ job.location }} | {{ job.jobType }}</small>
-      <p>{{ job.description | slice: 0 : 100 }}...</p>
-      <button class="btn btn-sm btn-link" (click)="viewJobDetails(job.id)">
-        View Details
-      </button>
-    </div>
+    <app-job-card [job]="job" />
   }
 </div>
