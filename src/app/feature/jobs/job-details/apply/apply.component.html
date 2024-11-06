@@ -1,1 +1,26 @@
-<p>apply works!</p>
+<form clrForm [formGroup]="form" (ngSubmit)="onSubmit()">
+  @for (question of questions(); track question.id) {
+    <clr-input-container>
+      <label [for]="question.id">{{ question.label }}</label>
+      <input
+        clrInput
+        [type]="question.type"
+        [id]="question.id"
+        [name]="question.id"
+        [formControlName]="question.id"
+        [required]="question.required"
+        [placeholder]="question.placeholder"
+      />
+      <clr-control-helper>
+        Helper text that shows while it is pristine and valid
+      </clr-control-helper>
+      <clr-control-error>
+        Error message that appears after focus is lost and control is invalid
+      </clr-control-error>
+    </clr-input-container>
+  }
+
+  <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+    Submit Application
+  </button>
+</form>
