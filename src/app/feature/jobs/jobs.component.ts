@@ -1,4 +1,9 @@
-import { Component, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 import { JobService } from '../../core/service/job.service';
 import { Job } from '../../shared/model/job.model';
 import { SlicePipe } from '@angular/common';
@@ -12,6 +17,7 @@ import { tap } from 'rxjs';
   imports: [SlicePipe, JobCardComponent],
   templateUrl: './jobs.component.html',
   styleUrl: './jobs.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JobsComponent {
   #jobService = inject(JobService);

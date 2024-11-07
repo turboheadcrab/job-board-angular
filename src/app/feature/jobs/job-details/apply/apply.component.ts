@@ -1,4 +1,11 @@
-import { Component, inject, input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
 import { ClrFormsModule } from '@clr/angular';
 import {
   FormBuilder,
@@ -26,6 +33,7 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
   templateUrl: './apply.component.html',
   styleUrl: './apply.component.scss',
   providers: provideNgxMask(),
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ApplyComponent {
   #applicationService = inject(ApplicationService);
@@ -35,7 +43,8 @@ export class ApplyComponent {
 
   id = input.required<string>();
 
-  shownQuestions = signal<Question[]>([]);
+  questions = signal<Question[]>([]);
+  shownQuestions = computed<Question[]>(() => this.questions());
   formInitialized = signal<boolean>(false);
 
   constructor() {
@@ -50,7 +59,7 @@ export class ApplyComponent {
       .getQuestions()
       .pipe(
         tap({
-          next: (questions: Question[]) => this.shownQuestions.set(questions),
+          next: (questions: Question[]) => this.questions.set(questions),
         }),
         takeUntilDestroyed(),
       )
@@ -93,8 +102,4 @@ export class ApplyComponent {
   }
 
   protected readonly QuestionType = QuestionType;
-
-  printInfo($event: MouseEvent) {
-    console.log($event);
-  }
 }

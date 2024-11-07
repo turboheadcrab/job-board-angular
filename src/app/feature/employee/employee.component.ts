@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ClrAlertModule } from '@clr/angular';
 
 @Component({
@@ -7,5 +7,6 @@ import { ClrAlertModule } from '@clr/angular';
   imports: [ClrAlertModule],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmployeeComponent {}

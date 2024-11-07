@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   ClarityModule,
   ClrIconModule,
@@ -23,6 +23,7 @@ import { ThemePreference, ThemeService } from './core/service/theme.service';
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   #themeService = inject(ThemeService);

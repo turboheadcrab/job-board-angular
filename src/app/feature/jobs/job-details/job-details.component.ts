@@ -1,4 +1,10 @@
-import { Component, inject, input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
@@ -13,6 +19,7 @@ import { JobService } from '../../../core/service/job.service';
   imports: [DatePipe, RouterLink],
   templateUrl: './job-details.component.html',
   styleUrl: './job-details.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JobDetailsComponent {
   #jobService = inject(JobService);
