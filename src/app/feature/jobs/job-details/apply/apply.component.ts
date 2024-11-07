@@ -35,7 +35,7 @@ export class ApplyComponent {
 
   id = input.required<string>();
 
-  questions = signal<Question[]>([]);
+  shownQuestions = signal<Question[]>([]);
   formInitialized = signal<boolean>(false);
 
   constructor() {
@@ -50,12 +50,12 @@ export class ApplyComponent {
       .getQuestions()
       .pipe(
         tap({
-          next: (questions: Question[]) => this.questions.set(questions),
+          next: (questions: Question[]) => this.shownQuestions.set(questions),
         }),
         takeUntilDestroyed(),
       )
       .subscribe();
-    for (const question of this.questions()) {
+    for (const question of this.shownQuestions()) {
       const formControl = this.#createAControl(question);
       if (question.type === QuestionType.Radio) {
         console.info(
