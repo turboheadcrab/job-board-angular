@@ -3,7 +3,7 @@ import { Question, QuestionType } from '../model/question.model';
 export const QUESTIONS: Question[] = [
   {
     id: 'firstName',
-    label: '1. First Name',
+    label: 'First Name',
     type: QuestionType.Text,
     required: true,
     placeholder: 'John',
@@ -11,7 +11,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 'lastName',
-    label: '2. Last Name',
+    label: 'Last Name',
     type: QuestionType.Text,
     required: true,
     placeholder: 'Doe',
@@ -19,21 +19,21 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 'phoneNumber',
-    label: '3. Phone Number',
+    label: 'Phone Number',
     type: QuestionType.Tel,
     required: true,
     placeholder: '+1 (555) 555-5555',
   },
   {
     id: 'email',
-    label: '4. Email',
+    label: 'Email',
     type: QuestionType.Email,
     required: true,
     placeholder: 'email@example.com',
   },
   {
     id: 'workAuthorization',
-    label: '5. Are you authorized to work in the United States?',
+    label: 'Are you authorized to work in the United States?',
     type: QuestionType.Radio,
     required: true,
     options: [
@@ -49,7 +49,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 'backgroundCheck',
-    label: '6. Are you willing to submit to a background check?',
+    label: 'Are you willing to submit to a background check?',
     type: QuestionType.Radio,
     required: true,
     options: [
@@ -66,14 +66,14 @@ export const QUESTIONS: Question[] = [
   {
     id: 'previousGmLocations',
     label:
-      '7. Have you ever worked at any location with GM Management? If yes, please list locations.',
+      'Have you ever worked at any location with GM Management? If yes, please list locations.',
     type: QuestionType.Text,
     required: false,
     placeholder: 'N/A',
   },
   {
     id: 'location',
-    label: '8. What location are you applying to?',
+    label: 'What location are you applying to?',
     type: QuestionType.Radio,
     required: true,
     options: [
