@@ -1,6 +1,6 @@
 @defer (when formInitialized()) {
   <form clrForm [formGroup]="form" (ngSubmit)="onSubmit()">
-    @for (question of questions(); track question.id) {
+    @for (question of shownQuestions(); track question.id) {
       @switch (question.type) {
         @case (QuestionType.Text) {
           <clr-input-container>
@@ -33,7 +33,6 @@
               prefix="+1 "
               mask="(000) 000-0000"
               [showMaskTyped]="true"
-              [keepCharacterPositions]="true"
               [type]="question.type"
               [id]="question.id"
               [name]="question.id"
@@ -83,7 +82,6 @@
                   [formControlName]="question.id"
                   [id]="option.id"
                   [value]="option.id"
-                  (click)="printInfo($event)"
                 />
                 <label [for]="option.id">{{ option.label }}</label>
               </clr-radio-wrapper>

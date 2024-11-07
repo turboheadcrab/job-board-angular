@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ClrAlertModule } from '@clr/angular';
 
 @Component({
   selector: 'app-employee',
   standalone: true,
-  imports: [],
+  imports: [ClrAlertModule],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmployeeComponent {}

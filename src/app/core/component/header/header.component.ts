@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ClrIconModule, ClrNavigationModule } from '@clr/angular';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -8,5 +8,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   imports: [ClrIconModule, RouterLink, RouterLinkActive, ClrNavigationModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {}
