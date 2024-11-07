@@ -16,6 +16,8 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { Document, Packer, Paragraph, TextRun } from 'docx';
+import { saveAs } from 'file-saver';
 import { tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
@@ -98,7 +100,48 @@ export class ApplyComponent {
   }
 
   onSubmit() {
-    console.info('ApplyComponent.onSubmit(), form.value: ', this.form.value);
+    const formValue = this.form.value;
+    console.info('ApplyComponent.onSubmit(), form.value: ', formValue);
+    const paragraphs = this.shownQuestions().map<Paragraph>(
+      (question: Question, index: number) =>
+        new Paragraph({
+          children: [
+            new TextRun({
+              text: `${index + 1}. ${question.label}`,
+              bold: true,
+              break: 2,
+            }),
+            new TextRun({
+              text: `${formValue[question.id]}`,
+              break: 1,
+            }),
+          ],
+        }),
+    );
+    console.info('ApplyComponent.onSubmit(), paragraphs: ', paragraphs);
+    const doc = new Document({
+      sections: [
+        {
+          children: [
+            new Paragraph({
+              alignment: 'center',
+              heading: 'Heading1',
+              children: [
+                new TextRun({
+                  text: 'Application Answers',
+                }),
+              ],
+            }),
+            ...paragraphs,
+          ],
+        },
+      ],
+    });
+    this.#download(doc);
+  }
+
+  #download(doc: Document): void {
+    Packer.toBlob(doc).then((blob) => saveAs(blob, 'test.docx'));
   }
 
   protected readonly QuestionType = QuestionType;
