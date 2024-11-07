@@ -2,7 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { JobService } from '../../core/service/job.service';
 import { Job } from '../../shared/model/job.model';
 import { SlicePipe } from '@angular/common';
-import { JobCardComponent } from '../../shared/components/job-card/job-card.component';
+import { JobCardComponent } from '../../shared/component/job-card/job-card.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { tap } from 'rxjs';
 
