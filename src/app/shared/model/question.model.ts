@@ -1,15 +1,23 @@
+export interface Section {
+  key: string;
+  label: string;
+  questions: Question[];
+}
+
 export interface Question {
-  id: string;
+  key: string;
   label: string;
   type: QuestionType;
   required: boolean;
+  isABranch: boolean;
   placeholder?: string;
   helperText?: string;
   options?: Option[];
+  conditional?: Option;
 }
 
 export interface Option {
-  id: string;
+  key: string;
   label: string;
 }
 

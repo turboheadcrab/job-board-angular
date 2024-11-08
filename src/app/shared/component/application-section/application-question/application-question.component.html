@@ -1,0 +1,39 @@
+@switch (question().type) {
+  @case (QuestionType.Text) {
+    <clr-input-container>
+      <label
+        [for]="question().key"
+        [class.clr-required-mark]="question().required"
+      >
+        {{ question().label }}
+      </label>
+      <input
+        clrInput
+        type="text"
+        [id]="question().key"
+        [name]="question().key"
+        [required]="question().required"
+        [placeholder]="question().placeholder ?? ''"
+      />
+    </clr-input-container>
+  }
+  @case (QuestionType.Tel) {
+    <clr-input-container>
+      <label [class.clr-required-mark]="question().required">
+        {{ question().label }}
+      </label>
+      <input
+        clrInput
+        prefix="+1 "
+        mask="(000) 000-0000"
+        [showMaskTyped]="true"
+        [type]="question().type"
+        [id]="question().key"
+        [name]="question().key"
+        [formControlName]="question().key"
+        [required]="question().required"
+        [placeholder]="question().placeholder"
+      />
+    </clr-input-container>
+  }
+}

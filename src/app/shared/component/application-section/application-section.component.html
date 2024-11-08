@@ -1,0 +1,7 @@
+<section [formGroupName]="section().key">
+  <h2 cds-text="section">{{ section().label }}</h2>
+
+  @for (question of section().questions; track question.key) {
+    <app-application-question [question]="question" />
+  }
+</section>

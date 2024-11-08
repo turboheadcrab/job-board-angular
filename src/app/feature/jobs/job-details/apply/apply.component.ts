@@ -21,24 +21,34 @@ import { saveAs } from 'file-saver';
 import { tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { ApplicationService } from '../../../../core/service/application.service';
+import { ApplicationConfigService } from '../../../../core/service/application-config.service';
 import {
   Question,
   QuestionType,
+  Section,
 } from '../../../../shared/model/question.model';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { ApplicationFormService } from '../../../../core/service/application-form.service';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-apply',
   standalone: true,
-  imports: [ClrFormsModule, FormsModule, ReactiveFormsModule, NgxMaskDirective],
+  imports: [
+    ClrFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxMaskDirective,
+    JsonPipe,
+  ],
   templateUrl: './apply.component.html',
   styleUrl: './apply.component.scss',
   providers: provideNgxMask(),
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ApplyComponent {
-  #applicationService = inject(ApplicationService);
+  #applicationConfigService = inject(ApplicationConfigService);
+  #applicationFormService = inject(ApplicationFormService);
   #formBuilder = inject(FormBuilder);
 
   form: FormRecord = this.#formBuilder.record({});
@@ -49,6 +59,12 @@ export class ApplyComponent {
   shownQuestions = computed<Question[]>(() => this.questions());
   formInitialized = signal<boolean>(false);
 
+  sections = signal<Section[]>([]);
+
+  areQuestionsLoaded = this.#applicationFormService.isQuestionsConfigLoaded;
+  applicationFormValue = this.#applicationFormService.applicationFormValue;
+  isApplicationFormValid = this.#applicationFormService.isApplicationFormValid;
+
   constructor() {
     console.info('ApplyComponent.constructor() started');
     this.form.valueChanges.subscribe((value) =>
@@ -57,11 +73,20 @@ export class ApplyComponent {
     this.form.statusChanges.subscribe((status) =>
       console.log('Form status changed to: ', status),
     );
-    this.#applicationService
+    this.#applicationConfigService
       .getQuestions()
       .pipe(
         tap({
           next: (questions: Question[]) => this.questions.set(questions),
+        }),
+        takeUntilDestroyed(),
+      )
+      .subscribe();
+    this.#applicationConfigService
+      .getSections()
+      .pipe(
+        tap({
+          next: (sections: Section[]) => this.sections.set(sections),
         }),
         takeUntilDestroyed(),
       )
@@ -81,7 +106,7 @@ export class ApplyComponent {
         );
         console.log('Radio validators:', formControl.validator);
       }
-      this.form.addControl(question.id, formControl);
+      this.form.addControl(question.key, formControl);
     }
 
     this.formInitialized.set(true);
@@ -112,7 +137,7 @@ export class ApplyComponent {
               break: 2,
             }),
             new TextRun({
-              text: `${formValue[question.id]}`,
+              text: `${formValue[question.key]}`,
               break: 1,
             }),
           ],
