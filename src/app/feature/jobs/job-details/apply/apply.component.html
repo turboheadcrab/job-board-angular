@@ -133,6 +133,9 @@
 <p>Are questions loaded? {{ areQuestionsLoaded() }}</p>
 @defer (when areQuestionsLoaded()) {
   <form clrForm>
+    @for (section of sections(); track section.key) {
+
+    }
     <p>Is form valid? {{ isApplicationFormValid() }}</p>
     <p>Application form value: {{ applicationFormValue() }}</p>
     <p>Application form value JSONed: {{ applicationFormValue() | json }}</p>

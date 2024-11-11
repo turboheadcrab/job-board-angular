@@ -25,26 +25,16 @@ export class ThemeService {
   #preferredTheme = signal<ThemePreference>(ThemePreference.System);
 
   constructor() {
-    console.info('ThemeService.constructor() started');
     const savedPreference: string | null =
       localStorage.getItem(STORED_THEME_KEY);
-    console.info(
-      'ThemeService.constructor() savedPreference: ',
-      savedPreference,
-    );
-
     const initialTheme: ThemePreference =
       this.#determineInitialTheme(savedPreference);
-    this.#preferredTheme.set(initialTheme);
+    this.#preferredTheme.set(Number(initialTheme));
 
     toObservable(this.#preferredTheme)
       .pipe(
         tap({
           next: (theme: ThemePreference) => {
-            console.info(
-              'ThemeService.constructor() preferredTheme changed:',
-              theme,
-            );
             switch (theme) {
               case ThemePreference.Dark:
                 this.#appTheme.set(AppTheme.Dark);
@@ -64,13 +54,8 @@ export class ThemeService {
     toObservable(this.#appTheme)
       .pipe(
         tap({
-          next: (appTheme: AppTheme) => {
-            console.info(
-              'ThemeService.constructor() appTheme changed:',
-              appTheme,
-            );
-            document.body.setAttribute('cds-theme', appTheme);
-          },
+          next: (appTheme: AppTheme) =>
+            document.body.setAttribute('cds-theme', appTheme),
         }),
         takeUntilDestroyed(),
       )
@@ -82,32 +67,22 @@ export class ThemeService {
     );
   }
 
-  #determineInitialTheme(savedPreference: string | null): ThemePreference {
-    console.info(
-      'ThemeService.#determineInitialTheme() savedPreference:',
-      savedPreference,
-    );
-    if (
-      savedPreference &&
-      Object.values(ThemePreference).includes(Number(savedPreference))
-    ) {
-      return savedPreference as unknown as ThemePreference;
-    }
-    return ThemePreference.System;
+  #determineInitialTheme(
+    savedPreferenceString: string | null,
+  ): ThemePreference {
+    const savedPreference = Number(savedPreferenceString);
+    const isValidPreference =
+      !!savedPreferenceString &&
+      Object.values(ThemePreference).includes(savedPreference);
+    return isValidPreference
+      ? (savedPreference as ThemePreference)
+      : ThemePreference.System;
   }
 
   #processSystemTheme(e: MediaQueryListEvent | MediaQueryList) {
-    console.info(
-      'ThemeService.#processSystemTheme() (prefers-color-scheme: dark): ',
-      e.matches,
-    );
     if (this.#preferredTheme() === ThemePreference.System) {
       this.#appTheme.set(e.matches ? AppTheme.Dark : AppTheme.Light);
     }
-  }
-
-  getPreferredTheme(): ThemePreference {
-    return this.#preferredTheme();
   }
 
   setPreferredTheme(theme: ThemePreference) {
