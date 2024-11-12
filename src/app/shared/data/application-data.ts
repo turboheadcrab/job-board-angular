@@ -1,235 +1,16 @@
-import { Question, QuestionType, Section } from '../model/question.model';
-
-export const QUESTIONS: Question[] = [
-  {
-    key: 'question1',
-    label: 'First Name',
-    type: QuestionType.Text,
-    required: true,
-    isABranch: false,
-    placeholder: 'John',
-    helperText: 'Enter your first name',
-  },
-  {
-    key: 'question2',
-    label: 'Last Name',
-    type: QuestionType.Text,
-    required: true,
-    isABranch: false,
-
-    placeholder: 'Doe',
-    helperText: 'Enter your last name',
-  },
-  {
-    key: 'question3',
-    label: 'Phone Number',
-    type: QuestionType.Tel,
-    isABranch: false,
-
-    required: true,
-    placeholder: '+1 (555) 555-5555',
-  },
-  {
-    key: 'question4',
-    label: 'Email',
-    type: QuestionType.Email,
-    isABranch: false,
-
-    required: true,
-    placeholder: 'email@example.com',
-  },
-  {
-    key: 'question5',
-    label: 'Are you authorized to work in the United States?',
-    type: QuestionType.Radio,
-    isABranch: false,
-
-    required: true,
-    options: [
-      {
-        key: 'question5option1',
-        label: 'Yes',
-      },
-      {
-        key: 'question5option2',
-        label: 'No',
-      },
-    ],
-  },
-  {
-    key: 'question6',
-    label: 'Are you willing to submit to a background check?',
-    type: QuestionType.Radio,
-    isABranch: false,
-
-    required: true,
-    options: [
-      {
-        key: 'question6option1',
-        label: 'Yes',
-      },
-      {
-        key: 'question6option2',
-        label: 'No',
-      },
-    ],
-  },
-  {
-    key: 'question7',
-    label:
-      'Have you ever worked at any location with GM Management? If yes, please list locations',
-    type: QuestionType.Text,
-    isABranch: false,
-    required: false,
-    placeholder: 'N/A',
-  },
-  {
-    key: 'question8',
-    label: 'What location are you applying to?',
-    type: QuestionType.Radio,
-    isABranch: false,
-    required: true,
-    options: [
-      {
-        key: 'question6option1',
-        label: 'Azul Cantina',
-      },
-      {
-        key: 'question6option2',
-        label: 'Junction 35 - Pigeon Forge',
-      },
-      {
-        key: 'question6option3',
-        label: 'Junction 35 - Sevierville',
-      },
-      {
-        key: 'question6option4',
-        label: 'Red Rooster',
-      },
-      {
-        key: 'question6option5',
-        label: 'Any location',
-      },
-    ],
-  },
-  {
-    key: 'question9',
-    label: 'What position are you applying for?',
-    type: QuestionType.Radio,
-    isABranch: true,
-    required: true,
-    options: [
-      {
-        key: 'positionOption1',
-        label: 'Host',
-      },
-      {
-        key: 'positionOption2',
-        label: 'Busser',
-      },
-      {
-        key: 'positionOption3',
-        label: 'Food Runner',
-      },
-      {
-        key: 'positionOption4',
-        label: 'Server',
-      },
-      {
-        key: 'positionOption5',
-        label: 'Bartender',
-      },
-      {
-        key: 'positionOption6',
-        label: 'Line Cook',
-      },
-      {
-        key: 'positionOption7',
-        label: 'Prep Cook',
-      },
-      {
-        key: 'positionOption8',
-        label: 'Dishwasher',
-      },
-      {
-        key: 'positionOption9',
-        label: 'Distillery Sampler',
-      },
-      {
-        key: 'positionOption10',
-        label: 'Manager',
-      },
-      {
-        key: 'positionOption11',
-        label: 'Any',
-      },
-    ],
-  },
-  {
-    key: 'howDidYouHearSelect',
-    label: 'How did you hear about this job?',
-    type: QuestionType.Radio,
-    isABranch: false,
-    required: true,
-    options: [
-      {
-        key: 'howDidYouHearSelectOption1',
-        label: 'Social Media',
-      },
-      {
-        key: 'howDidYouHearSelectOption2',
-        label: 'Walk In',
-      },
-      {
-        key: 'howDidYouHearSelectOption3',
-        label: 'Other',
-      },
-      {
-        key: 'howDidYouHearSelectOption4',
-        label: 'Referral',
-      },
-    ],
-  },
-  {
-    key: 'howDidYouHearText',
-    label: 'Tell us how you heard about us',
-    type: QuestionType.Text,
-    isABranch: false,
-    required: false,
-  },
-  {
-    key: 'referee',
-    label: 'If someone referred you, please write name of employee',
-    type: QuestionType.Text,
-    isABranch: true,
-    required: false,
-  },
-  {
-    key: 'scheduleRestrictions',
-    label: 'Do you have any schedule restrictions? If yes, please explain',
-    type: QuestionType.TextArea,
-    isABranch: false,
-    required: true,
-  },
-  {
-    key: 'startDateAvailability',
-    label: 'When are you available to start?',
-    type: QuestionType.Date,
-    isABranch: false,
-    required: true,
-  },
-];
+import { QuestionType, Section } from '../model/question.model';
 
 export const QUESTION_SECTIONS: Section[] = [
   {
-    key: 'applicant',
+    key: 'section1',
     label: 'Tell us about yourself',
+    isRepeatable: false,
     questions: [
       {
         key: 'question1',
         label: 'First Name',
         type: QuestionType.Text,
-        required: true,
+        isRequired: true,
         isABranch: false,
         placeholder: 'John',
         helperText: 'Enter your first name',
@@ -238,7 +19,7 @@ export const QUESTION_SECTIONS: Section[] = [
         key: 'question2',
         label: 'Last Name',
         type: QuestionType.Text,
-        required: true,
+        isRequired: true,
         isABranch: false,
 
         placeholder: 'Doe',
@@ -250,7 +31,7 @@ export const QUESTION_SECTIONS: Section[] = [
         type: QuestionType.Tel,
         isABranch: false,
 
-        required: true,
+        isRequired: true,
         placeholder: '+1 (555) 555-5555',
       },
       {
@@ -259,7 +40,7 @@ export const QUESTION_SECTIONS: Section[] = [
         type: QuestionType.Email,
         isABranch: false,
 
-        required: true,
+        isRequired: true,
         placeholder: 'email@example.com',
       },
       {
@@ -268,7 +49,7 @@ export const QUESTION_SECTIONS: Section[] = [
         type: QuestionType.Radio,
         isABranch: false,
 
-        required: true,
+        isRequired: true,
         options: [
           {
             key: 'question5option1',
@@ -286,7 +67,7 @@ export const QUESTION_SECTIONS: Section[] = [
         type: QuestionType.Radio,
         isABranch: false,
 
-        required: true,
+        isRequired: true,
         options: [
           {
             key: 'question6option1',
@@ -304,7 +85,7 @@ export const QUESTION_SECTIONS: Section[] = [
           'Have you ever worked at any location with GM Management? If yes, please list locations',
         type: QuestionType.Text,
         isABranch: false,
-        required: false,
+        isRequired: false,
         placeholder: 'N/A',
       },
       {
@@ -312,26 +93,26 @@ export const QUESTION_SECTIONS: Section[] = [
         label: 'What location are you applying to?',
         type: QuestionType.Radio,
         isABranch: false,
-        required: true,
+        isRequired: true,
         options: [
           {
-            key: 'question6option1',
+            key: 'question8option1',
             label: 'Azul Cantina',
           },
           {
-            key: 'question6option2',
+            key: 'question8option2',
             label: 'Junction 35 - Pigeon Forge',
           },
           {
-            key: 'question6option3',
+            key: 'question8option3',
             label: 'Junction 35 - Sevierville',
           },
           {
-            key: 'question6option4',
+            key: 'question8option4',
             label: 'Red Rooster',
           },
           {
-            key: 'question6option5',
+            key: 'question8option5',
             label: 'Any location',
           },
         ],
@@ -341,7 +122,7 @@ export const QUESTION_SECTIONS: Section[] = [
         label: 'What position are you applying for?',
         type: QuestionType.Radio,
         isABranch: true,
-        required: true,
+        isRequired: true,
         options: [
           {
             key: 'positionOption1',
@@ -394,7 +175,7 @@ export const QUESTION_SECTIONS: Section[] = [
         label: 'How did you hear about this job?',
         type: QuestionType.Radio,
         isABranch: false,
-        required: true,
+        isRequired: true,
         options: [
           {
             key: 'howDidYouHearSelectOption1',
@@ -419,54 +200,55 @@ export const QUESTION_SECTIONS: Section[] = [
         label: 'Tell us how you heard about us',
         type: QuestionType.Text,
         isABranch: false,
-        required: false,
+        isRequired: false,
       },
       {
         key: 'referee',
         label: 'If someone referred you, please write name of employee',
         type: QuestionType.Text,
         isABranch: true,
-        required: false,
+        isRequired: false,
       },
       {
         key: 'scheduleRestrictions',
         label: 'Do you have any schedule restrictions? If yes, please explain',
         type: QuestionType.TextArea,
         isABranch: false,
-        required: true,
+        isRequired: true,
       },
       {
         key: 'startDateAvailability',
         label: 'When are you available to start?',
         type: QuestionType.Date,
         isABranch: false,
-        required: true,
+        isRequired: true,
       },
     ],
   },
   {
-    key: 'experience',
+    key: 'section2',
     label: 'Tell us about your experience',
+    isRepeatable: true,
     questions: [
       {
         key: 'companyName',
         label: 'Company name',
         type: QuestionType.Text,
-        required: true,
+        isRequired: true,
         isABranch: false,
       },
       {
         key: 'role',
         label: 'Role',
         type: QuestionType.Text,
-        required: true,
+        isRequired: true,
         isABranch: false,
       },
       {
         key: 'experience',
         label: 'Experience',
         type: QuestionType.Radio,
-        required: true,
+        isRequired: true,
         isABranch: false,
         options: [
           {
@@ -499,30 +281,32 @@ export const QUESTION_SECTIONS: Section[] = [
         key: 'leavingReason',
         label: 'What was your reason for leaving?',
         type: QuestionType.Text,
-        required: true,
+        isRequired: true,
         isABranch: false,
       },
       {
         key: 'canContactExEmployer',
         label: 'Are we able to contact your employer?',
         type: QuestionType.Radio,
-        required: true,
+        isRequired: true,
         isABranch: false,
       },
     ],
   },
   {
-    key: 'anythingElse',
+    key: 'section3',
     label: 'Anything else you would like to share?',
+    isRepeatable: false,
     questions: [
       {
-        key: 'anythingElse',
+        key: 'question1',
         label:
-          'Provide details about education, certifications, or any other relevant information. Tip: Candidates\n' +
-          'who add additional details typically receive more responses!',
+          'Provide details about education, certifications, or any other relevant information.',
         type: QuestionType.TextArea,
-        required: false,
+        isRequired: false,
         isABranch: false,
+        helperText:
+          'Tip: Candidates who add additional details typically receive more responses!',
       },
     ],
   },

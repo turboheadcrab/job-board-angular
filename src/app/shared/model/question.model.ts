@@ -1,6 +1,12 @@
 export interface Section {
   key: string;
   label: string;
+  isRepeatable: boolean;
+  questions: Question[];
+}
+
+export interface ShownSection {
+  key: string;
   questions: Question[];
 }
 
@@ -8,7 +14,7 @@ export interface Question {
   key: string;
   label: string;
   type: QuestionType;
-  required: boolean;
+  isRequired: boolean;
   isABranch: boolean;
   placeholder?: string;
   helperText?: string;
