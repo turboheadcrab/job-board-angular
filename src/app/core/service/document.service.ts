@@ -9,6 +9,55 @@ import type { Question } from '../../shared/model/question.model';
   providedIn: 'root',
 })
 export class DocumentService {
+  saveFormAsWordDoc2(form: FormRecord) {
+    const formValue = form.value;
+    console.info(
+      'DocumentService.saveFormAsWordDoc2(), form.value: ',
+      formValue,
+    );
+    const paragraphs = Object.keys(formValue)
+      .sort()
+      .map<Paragraph>(
+        (key: string) =>
+          new Paragraph({
+            children: [
+              new TextRun({
+                text: key,
+                bold: true,
+                break: 2,
+              }),
+              new TextRun({
+                text: formValue[key],
+                break: 1,
+              }),
+            ],
+          }),
+      );
+    console.info(
+      'DocumentService.saveFormAsWordDoc2(), paragraphs: ',
+      paragraphs,
+    );
+    const doc = new Document({
+      sections: [
+        {
+          children: [
+            new Paragraph({
+              alignment: 'center',
+              heading: 'Heading1',
+              children: [
+                new TextRun({
+                  text: 'Application answers',
+                }),
+              ],
+            }),
+            ...paragraphs,
+          ],
+        },
+      ],
+    });
+    this.#download(doc);
+  }
+
   saveFormAsWordDoc(form: FormRecord, shownQuestions: Question[]) {
     const formValue = form.value;
     console.info('ApplyComponent.onSubmit(), form.value: ', formValue);

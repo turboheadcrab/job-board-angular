@@ -4,7 +4,11 @@
   @for (sectionTypeKey of sectionTypesKeys(); track sectionTypeKey) {
     <app-application-section [sectionTypeKey]="sectionTypeKey" />
     @if (canAddSection(sectionTypeKey)) {
-      <button class="btn btn-primary" (click)="onAddSection(sectionTypeKey)">
+      <button
+        class="btn btn-primary"
+        type="button"
+        (click)="onAddSection(sectionTypeKey)"
+      >
         Add
       </button>
     }

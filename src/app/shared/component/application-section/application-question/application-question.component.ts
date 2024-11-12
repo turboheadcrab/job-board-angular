@@ -53,8 +53,8 @@ export class ApplicationQuestionComponent {
       .subscribe();
   }
 
-  getControl(sectionKey: string, questionKey: string): FormControl<string> {
-    return this.#applicationFormService.getControl(sectionKey, questionKey);
+  getControl(fieldKey: string): FormControl<string> {
+    return this.#applicationFormService.getControl(fieldKey);
   }
 
   protected readonly QuestionType = QuestionType;
