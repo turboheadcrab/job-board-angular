@@ -3,7 +3,7 @@ import { Document, Packer, Paragraph, TextRun } from 'docx';
 import { saveAs } from 'file-saver';
 import { FormRecord } from '@angular/forms';
 
-import type { Question, Section } from '../../shared/model/question.model';
+import type { Section } from '../../shared/model/question.model';
 
 @Injectable({
   providedIn: 'root',
@@ -36,28 +36,57 @@ export class DocumentService {
         }),
       );
 
-      // Iterate over each question in the section
-      section.questions.forEach((question: Question) => {
-        // For each repeatable index in the form, get the corresponding value
-        Object.keys(formValue).forEach((key) => {
-          const [sectionKey, , questionKey] = key.split('_');
-          if (section.key === sectionKey && question.key === questionKey) {
-            allParagraphs.push(
-              new Paragraph({
-                children: [
-                  new TextRun({
-                    text: question.label,
-                    bold: true,
-                    break: 2,
-                  }),
-                  new TextRun({
-                    text: formValue[key],
-                    break: 1,
-                  }),
-                ],
-              }),
-            );
+      // Group the questions by their repeatable index
+      const groupedQuestions: Record<string, Record<string, string>> = {};
+
+      Object.keys(formValue).forEach((key) => {
+        const [sectionKey, repeatableIndex, questionKey] = key.split('_');
+        if (section.key === sectionKey) {
+          if (!groupedQuestions[repeatableIndex]) {
+            groupedQuestions[repeatableIndex] = {};
           }
+          groupedQuestions[repeatableIndex][questionKey] = formValue[key];
+        }
+      });
+
+      // Iterate over each repeatable index
+      Object.keys(groupedQuestions).forEach((repeatableIndex) => {
+        // Add subsection header, if necessary
+        if (section.isRepeatable) {
+          allParagraphs.push(
+            new Paragraph({
+              alignment: 'start',
+              heading: 'Heading3',
+              children: [
+                new TextRun({
+                  text: repeatableIndex + 1,
+                  bold: true,
+                  break: 2,
+                }),
+              ],
+            }),
+          );
+        }
+
+        // Add questions for this repeatable index
+        section.questions.forEach((question) => {
+          const questionAnswer =
+            groupedQuestions[repeatableIndex][question.key];
+          allParagraphs.push(
+            new Paragraph({
+              children: [
+                new TextRun({
+                  text: `${question.label}${question.isRequired ? '*' : ''}`,
+                  bold: true,
+                  break: 2,
+                }),
+                new TextRun({
+                  text: questionAnswer,
+                  break: 1,
+                }),
+              ],
+            }),
+          );
         });
       });
     });
