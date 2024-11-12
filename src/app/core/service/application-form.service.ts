@@ -176,8 +176,7 @@ export class ApplicationFormService {
     return foundQuestion;
   }
 
-  getControl(sectionKey: string, questionKey: string): FormControl<string> {
-    const fieldKey = `${sectionKey}_${questionKey}`;
+  getControl(fieldKey: string): FormControl<string> {
     console.info('ApplicationFormService.getControl: fieldKey', fieldKey);
     return this.#applicationFormRecord.get(fieldKey) as FormControl<string>;
   }
@@ -234,7 +233,9 @@ export class ApplicationFormService {
 
   onSubmit() {
     console.info('ApplyComponent: form: ', this.#applicationFormRecord);
-
-    // this.#documentService.saveFormAsWordDoc(this.#applicationFormRecord);
+    this.#documentService.saveFormAsWordDoc(
+      this.#applicationFormRecord,
+      this.sectionTypes(),
+    );
   }
 }

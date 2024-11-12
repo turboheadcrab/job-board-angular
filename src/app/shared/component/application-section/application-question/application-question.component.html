@@ -3,7 +3,7 @@
     @case (QuestionType.Text) {
       <clr-input-container>
         <label
-          [for]="question.key"
+          [for]="fieldKey()"
           [class.clr-required-mark]="question.isRequired"
         >
           {{ question.label }}
@@ -11,9 +11,9 @@
         <input
           clrInput
           type="text"
-          [id]="question.key"
-          [name]="question.key"
-          [formControl]="getControl(sectionKey(), questionKey())"
+          [id]="fieldKey()"
+          [name]="fieldKey()"
+          [formControl]="getControl(fieldKey())"
           [required]="question.isRequired"
           [placeholder]="question.placeholder ?? ''"
         />
@@ -27,7 +27,7 @@
     @case (QuestionType.Tel) {
       <clr-input-container>
         <label
-          [for]="question.key"
+          [for]="fieldKey()"
           [class.clr-required-mark]="question.isRequired"
         >
           {{ question.label }}
@@ -36,14 +36,19 @@
           clrInput
           prefix="+1 "
           mask="(000) 000-0000"
+          type="tel"
           [showMaskTyped]="true"
-          [type]="question.type"
-          [id]="question.key"
-          [name]="question.key"
-          [formControl]="getControl(sectionKey(), questionKey())"
+          [id]="fieldKey()"
+          [name]="fieldKey()"
+          [formControl]="getControl(fieldKey())"
           [required]="question.isRequired"
           [placeholder]="question.placeholder"
         />
+        @if (question.helperText; as helperText) {
+          <clr-control-helper>
+            {{ helperText }}
+          </clr-control-helper>
+        }
       </clr-input-container>
     }
     @case (QuestionType.Email) {
@@ -51,16 +56,18 @@
         <label [for]="question.key">{{ question.label }}</label>
         <input
           clrInput
-          [type]="question.type"
-          [id]="question.key"
-          [name]="question.key"
-          [formControl]="getControl(sectionKey(), questionKey())"
+          type="email"
+          [id]="fieldKey()"
+          [name]="fieldKey()"
+          [formControl]="getControl(fieldKey())"
           [required]="question.isRequired"
           [placeholder]="question.placeholder"
         />
-        <clr-control-helper>
-          Helper text that shows while it is pristine and valid
-        </clr-control-helper>
+        @if (question.helperText; as helperText) {
+          <clr-control-helper>
+            {{ helperText }}
+          </clr-control-helper>
+        }
         <clr-control-error>
           Error message that appears after focus is lost and control is invalid
         </clr-control-error>
@@ -68,19 +75,24 @@
     }
     @case (QuestionType.Radio) {
       <clr-radio-container>
-        <label [for]="question.key">{{ question.label }}</label>
+        <label [for]="fieldKey()">{{ question.label }}</label>
         @for (option of question.options; track option.key) {
           <clr-radio-wrapper>
             <input
               clrRadio
               type="radio"
-              [name]="question.key"
-              [formControl]="getControl(sectionKey(), questionKey())"
-              [id]="option.key"
+              [name]="fieldKey()"
+              [formControl]="getControl(fieldKey())"
+              [id]="fieldKey() + option.key"
               [value]="option.label"
             />
-            <label [for]="option.key">{{ option.label }}</label>
+            <label [for]="fieldKey() + option.key">{{ option.label }}</label>
           </clr-radio-wrapper>
+        }
+        @if (question.helperText; as helperText) {
+          <clr-control-helper>
+            {{ helperText }}
+          </clr-control-helper>
         }
         <clr-control-error>
           Error message that appears after focus is lost and control is invalid
@@ -89,15 +101,20 @@
     }
     @case (QuestionType.TextArea) {
       <clr-textarea-container>
-        <label [for]="question.key">{{ question.label }}</label>
+        <label [for]="fieldKey()">{{ question.label }}</label>
         <textarea
           clrTextarea
-          [id]="question.key"
-          [name]="question.key"
-          [formControl]="getControl(sectionKey(), questionKey())"
+          [id]="fieldKey()"
+          [name]="fieldKey()"
+          [formControl]="getControl(fieldKey())"
           [required]="question.isRequired"
           [placeholder]="question.placeholder ?? ''"
         ></textarea>
+        @if (question.helperText; as helperText) {
+          <clr-control-helper>
+            {{ helperText }}
+          </clr-control-helper>
+        }
       </clr-textarea-container>
     }
     @case (QuestionType.Date) {
@@ -108,10 +125,15 @@
           type="date"
           [id]="question.key"
           [name]="question.key"
-          [formControl]="getControl(sectionKey(), questionKey())"
+          [formControl]="getControl(fieldKey())"
           [required]="question.isRequired"
           [placeholder]="question.placeholder ?? ''"
         />
+        @if (question.helperText; as helperText) {
+          <clr-control-helper>
+            {{ helperText }}
+          </clr-control-helper>
+        }
       </clr-date-container>
     }
   }
