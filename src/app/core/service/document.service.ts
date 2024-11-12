@@ -3,39 +3,67 @@ import { Document, Packer, Paragraph, TextRun } from 'docx';
 import { saveAs } from 'file-saver';
 import { FormRecord } from '@angular/forms';
 
-import type { Question } from '../../shared/model/question.model';
+import type { Question, Section } from '../../shared/model/question.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DocumentService {
-  saveFormAsWordDoc2(form: FormRecord) {
+  saveFormAsWordDoc(form: FormRecord, sectionTypes: Section[]) {
     const formValue = form.value;
     console.info(
       'DocumentService.saveFormAsWordDoc2(), form.value: ',
       formValue,
     );
-    const paragraphs = Object.keys(formValue)
-      .sort()
-      .map<Paragraph>(
-        (key: string) =>
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: key,
-                bold: true,
-                break: 2,
-              }),
-              new TextRun({
-                text: formValue[key],
-                break: 1,
-              }),
-            ],
-          }),
+
+    // Create an array to hold all paragraphs
+    const allParagraphs: Paragraph[] = [];
+
+    // Iterate over each section
+    sectionTypes.forEach((section) => {
+      // Add section header
+      allParagraphs.push(
+        new Paragraph({
+          alignment: 'start',
+          heading: 'Heading2',
+          children: [
+            new TextRun({
+              text: section.label,
+              bold: true,
+              break: 3,
+            }),
+          ],
+        }),
       );
+
+      // Iterate over each question in the section
+      section.questions.forEach((question: Question) => {
+        // For each repeatable index in the form, get the corresponding value
+        Object.keys(formValue).forEach((key) => {
+          const [sectionKey, , questionKey] = key.split('_');
+          if (section.key === sectionKey && question.key === questionKey) {
+            allParagraphs.push(
+              new Paragraph({
+                children: [
+                  new TextRun({
+                    text: question.label,
+                    bold: true,
+                    break: 2,
+                  }),
+                  new TextRun({
+                    text: formValue[key],
+                    break: 1,
+                  }),
+                ],
+              }),
+            );
+          }
+        });
+      });
+    });
     console.info(
       'DocumentService.saveFormAsWordDoc2(), paragraphs: ',
-      paragraphs,
+      allParagraphs,
     );
     const doc = new Document({
       sections: [
@@ -50,48 +78,7 @@ export class DocumentService {
                 }),
               ],
             }),
-            ...paragraphs,
-          ],
-        },
-      ],
-    });
-    this.#download(doc);
-  }
-
-  saveFormAsWordDoc(form: FormRecord, shownQuestions: Question[]) {
-    const formValue = form.value;
-    console.info('ApplyComponent.onSubmit(), form.value: ', formValue);
-    const paragraphs = shownQuestions.map<Paragraph>(
-      (question: Question, index: number) =>
-        new Paragraph({
-          children: [
-            new TextRun({
-              text: `${index + 1}. ${question.label}`,
-              bold: true,
-              break: 2,
-            }),
-            new TextRun({
-              text: `${formValue[question.key]}`,
-              break: 1,
-            }),
-          ],
-        }),
-    );
-    console.info('ApplyComponent.onSubmit(), paragraphs: ', paragraphs);
-    const doc = new Document({
-      sections: [
-        {
-          children: [
-            new Paragraph({
-              alignment: 'center',
-              heading: 'Heading1',
-              children: [
-                new TextRun({
-                  text: 'Application Answers',
-                }),
-              ],
-            }),
-            ...paragraphs,
+            ...allParagraphs,
           ],
         },
       ],
