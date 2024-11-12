@@ -1,102 +1,19 @@
-@defer (when formInitialized()) {
-  <form clrForm [formGroup]="form" (ngSubmit)="onSubmit()">
-    @for (question of shownQuestions(); track question.id) {
-      @switch (question.type) {
-        @case (QuestionType.Text) {
-          <clr-input-container>
-            <label [for]="question.id">{{ question.label }}</label>
-            <input
-              clrInput
-              [type]="question.type"
-              [id]="question.id"
-              [name]="question.id"
-              [formControlName]="question.id"
-              [required]="question.required"
-              [placeholder]="question.placeholder ?? ''"
-            />
-            @if (question.helperText; as helperText) {
-              <clr-control-helper>
-                {{ helperText }}
-              </clr-control-helper>
-            }
-            <clr-control-error>
-              Error message that appears after focus is lost and control is
-              invalid
-            </clr-control-error>
-          </clr-input-container>
-        }
-        @case (QuestionType.Tel) {
-          <clr-input-container>
-            <label [for]="question.id">{{ question.label }}</label>
-            <input
-              clrInput
-              prefix="+1 "
-              mask="(000) 000-0000"
-              [showMaskTyped]="true"
-              [type]="question.type"
-              [id]="question.id"
-              [name]="question.id"
-              [formControlName]="question.id"
-              [required]="question.required"
-              [placeholder]="question.placeholder"
-            />
-            <clr-control-helper>
-              Helper text that shows while it is pristine and valid
-            </clr-control-helper>
-            <clr-control-error>
-              Error message that appears after focus is lost and control is
-              invalid
-            </clr-control-error>
-          </clr-input-container>
-        }
-        @case (QuestionType.Email) {
-          <clr-input-container>
-            <label [for]="question.id">{{ question.label }}</label>
-            <input
-              clrInput
-              [type]="question.type"
-              [id]="question.id"
-              [name]="question.id"
-              [formControlName]="question.id"
-              [required]="question.required"
-              [placeholder]="question.placeholder"
-            />
-            <clr-control-helper>
-              Helper text that shows while it is pristine and valid
-            </clr-control-helper>
-            <clr-control-error>
-              Error message that appears after focus is lost and control is
-              invalid
-            </clr-control-error>
-          </clr-input-container>
-        }
-        @case (QuestionType.Radio) {
-          <clr-radio-container>
-            <label [for]="question.id">{{ question.label }}</label>
-            @for (option of question.options; track option.id) {
-              <clr-radio-wrapper>
-                <input
-                  clrRadio
-                  type="radio"
-                  [name]="question.id"
-                  [formControlName]="question.id"
-                  [id]="option.id"
-                  [value]="option.label"
-                />
-                <label [for]="option.id">{{ option.label }}</label>
-              </clr-radio-wrapper>
-            }
-            <clr-control-error>
-              Error message that appears after focus is lost and control is
-              invalid
-            </clr-control-error>
-          </clr-radio-container>
-        }
-      }
-    }
+<h1 cds-text="title">Job Application Form</h1>
 
-    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
-      Submit Application
-    </button>
-  </form>
-}
+<form clrForm [formGroup]="applicationFormRecord" (ngSubmit)="onSubmit()">
+  @for (sectionTypeKey of sectionTypesKeys(); track sectionTypeKey) {
+    <app-application-section [sectionTypeKey]="sectionTypeKey" />
+    @if (canAddSection(sectionTypeKey)) {
+      <button class="btn btn-primary" (click)="onAddSection(sectionTypeKey)">
+        Add
+      </button>
+    }
+  }
+  <button
+    class="btn btn-primary"
+    type="submit"
+    [disabled]="applicationFormRecord.invalid"
+  >
+    Submit Application
+  </button>
+</form>

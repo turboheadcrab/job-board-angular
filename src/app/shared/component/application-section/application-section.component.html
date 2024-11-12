@@ -1,0 +1,23 @@
+<section>
+  @if (section(); as section) {
+    <h2 cds-text="section">{{ section.label }}</h2>
+
+    @for (sectionKey of thisSections(); track sectionKey) {
+      @for (question of section.questions; track question.key) {
+        <app-application-question
+          [sectionKey]="sectionKey"
+          [questionKey]="question.key"
+        />
+      }
+      @if (isSectionRepeatable()) {
+        <button
+          class="btn btn-danger"
+          type="button"
+          (click)="onRemoveSection(sectionKey)"
+        >
+          Remove
+        </button>
+      }
+    }
+  }
+</section>

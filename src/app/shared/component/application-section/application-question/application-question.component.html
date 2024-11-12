@@ -1,0 +1,118 @@
+@if (question(); as question) {
+  @switch (question.type) {
+    @case (QuestionType.Text) {
+      <clr-input-container>
+        <label
+          [for]="question.key"
+          [class.clr-required-mark]="question.isRequired"
+        >
+          {{ question.label }}
+        </label>
+        <input
+          clrInput
+          type="text"
+          [id]="question.key"
+          [name]="question.key"
+          [formControl]="getControl(sectionKey(), questionKey())"
+          [required]="question.isRequired"
+          [placeholder]="question.placeholder ?? ''"
+        />
+        @if (question.helperText; as helperText) {
+          <clr-control-helper>
+            {{ helperText }}
+          </clr-control-helper>
+        }
+      </clr-input-container>
+    }
+    @case (QuestionType.Tel) {
+      <clr-input-container>
+        <label
+          [for]="question.key"
+          [class.clr-required-mark]="question.isRequired"
+        >
+          {{ question.label }}
+        </label>
+        <input
+          clrInput
+          prefix="+1 "
+          mask="(000) 000-0000"
+          [showMaskTyped]="true"
+          [type]="question.type"
+          [id]="question.key"
+          [name]="question.key"
+          [formControl]="getControl(sectionKey(), questionKey())"
+          [required]="question.isRequired"
+          [placeholder]="question.placeholder"
+        />
+      </clr-input-container>
+    }
+    @case (QuestionType.Email) {
+      <clr-input-container>
+        <label [for]="question.key">{{ question.label }}</label>
+        <input
+          clrInput
+          [type]="question.type"
+          [id]="question.key"
+          [name]="question.key"
+          [formControl]="getControl(sectionKey(), questionKey())"
+          [required]="question.isRequired"
+          [placeholder]="question.placeholder"
+        />
+        <clr-control-helper>
+          Helper text that shows while it is pristine and valid
+        </clr-control-helper>
+        <clr-control-error>
+          Error message that appears after focus is lost and control is invalid
+        </clr-control-error>
+      </clr-input-container>
+    }
+    @case (QuestionType.Radio) {
+      <clr-radio-container>
+        <label [for]="question.key">{{ question.label }}</label>
+        @for (option of question.options; track option.key) {
+          <clr-radio-wrapper>
+            <input
+              clrRadio
+              type="radio"
+              [name]="question.key"
+              [formControl]="getControl(sectionKey(), questionKey())"
+              [id]="option.key"
+              [value]="option.label"
+            />
+            <label [for]="option.key">{{ option.label }}</label>
+          </clr-radio-wrapper>
+        }
+        <clr-control-error>
+          Error message that appears after focus is lost and control is invalid
+        </clr-control-error>
+      </clr-radio-container>
+    }
+    @case (QuestionType.TextArea) {
+      <clr-textarea-container>
+        <label [for]="question.key">{{ question.label }}</label>
+        <textarea
+          clrTextarea
+          [id]="question.key"
+          [name]="question.key"
+          [formControl]="getControl(sectionKey(), questionKey())"
+          [required]="question.isRequired"
+          [placeholder]="question.placeholder ?? ''"
+        ></textarea>
+      </clr-textarea-container>
+    }
+    @case (QuestionType.Date) {
+      <clr-date-container>
+        <label [for]="question.key">{{ question.label }}</label>
+        <input
+          clrDate
+          type="date"
+          [id]="question.key"
+          [name]="question.key"
+          [formControl]="getControl(sectionKey(), questionKey())"
+          [required]="question.isRequired"
+          [placeholder]="question.placeholder ?? ''"
+        />
+      </clr-date-container>
+    }
+  }
+}
