@@ -46,9 +46,7 @@
     </ul>
   }
 
-  @if (job.footer; as footer) {
-    <p>{{ footer }}</p>
-  }
+  <p>{{ FOOTER }}</p>
 
   <button class="btn btn-primary" [routerLink]="['/jobs', id(), 'apply']">
     Apply Now

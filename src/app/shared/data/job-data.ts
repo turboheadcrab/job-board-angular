@@ -32,8 +32,6 @@ export const JOBS: Job[] = [
       'Employee discounts on meals and merchandise.',
       'A fun and engaging work environment surrounded by passionate individuals.',
     ],
-    footer:
-      '*Gm Management LLC is an equal opportunity employer and values diversity in our workforce. We welcome applicants from all backgrounds.\n',
   },
   {
     id: 2,
@@ -70,8 +68,69 @@ export const JOBS: Job[] = [
       'Opportunities for professional development and growth within our expanding brand.',
       'Supportive and engaging work environment that values teamwork and creativity.',
     ],
-    footer:
-      '*GM Management LLC is an equal opportunity employer and values diversity in our workforce. We welcome applicants from all backgrounds.',
+  },
+  {
+    id: 3,
+    title: 'Bartender',
+    location: 'Sevier County, TN',
+    description:
+      'GM Management LLC is seeking an experienced and dynamic Bartender to join our bar team. As a Bartender, you will be responsible for creating and serving exceptional craft cocktails and beverages, as well as providing excellent service to our guests. Your passion for mixology, knowledge of spirits, and friendly demeanor will help us deliver a unique and enjoyable experience.',
+    responsibilities: [
+      'Prepare and serve alcoholic and non-alcoholic beverages in accordance with recipes and bar standards.',
+      'Perform bar prep duties including cutting fruits, preparing garnishes, and batching.',
+      'Create and craft unique, high-quality cocktails utilizing our premium spirits.',
+      'Provide friendly, attentive service to guests seated at the bar and in the dining area.',
+      'Maintain a clean and organized bar area, ensuring all equipment and utensils are properly cleaned and sanitized.',
+      'Handle cash and card transactions accurately and securely.',
+      'Monitor inventory levels and notify manager of any needs to maintain smooth bar operations.',
+      'Engage with guests, offering recommendations and answering any questions about our spirits and cocktail offerings.',
+      'Adhere to all health and safety regulations regarding alcohol service.',
+    ],
+    qualifications: [
+      'Previous bartending experience in a fast-paced environment is preferred.',
+      'Knowledge of mixology, beer, wine, and cocktail preparation.',
+      'Strong communication and interpersonal skills.',
+      'Ability to multitask and work efficiently under pressure.',
+      'Must be at least 18 years old and possess a TABC permit.',
+      'Flexibility to work evenings, weekends, and holidays.',
+      'Must be able to lift up to 50 pounds and stand for extended periods.',
+    ],
+    benefits: [
+      'Competitive pay plus tips.',
+      'Opportunities for growth within the company.',
+      'Employee discounts on meals and our exclusive spirits.',
+      'A fun and engaging work environment surrounded by passionate individuals.',
+    ],
+  },
+  {
+    id: 4,
+    title: 'Dishwasher',
+    location: 'Sevier County, TN',
+    description:
+      'GM Management LLC is looking for a reliable and hardworking Dishwasher to join our kitchen team. As a Dishwasher, you will play a crucial role in maintaining cleanliness and organization in our kitchen and dining areas. Your hard work will ensure that our culinary staff has what they need to deliver exceptional meals to our guests, contributing to our commitment to quality service.',
+    responsibilities: [
+      'Wash and sanitize all dishes, pots, pans, and utensils using commercial dishwashing equipment.',
+      'Maintain cleanliness of the dishwashing area and kitchen, including mopping floors and cleaning surfaces.',
+      'Organize and store clean dishes and utensils in their designated areas.',
+      'Assist kitchen staff by helping with food preparation as needed.',
+      'Monitor dishwashing supplies and notify management when inventory is low.',
+      'Follow all health and safety regulations and maintain a clean working environment.',
+      'Work efficiently during busy service times and assist with other tasks as assigned by the kitchen manager or chef.',
+    ],
+    qualifications: [
+      'Previous experience as a dishwasher or in a similar role is preferred but not required.',
+      'Ability to work in a fast-paced environment and stay organized under pressure.',
+      'Strong attention to detail and commitment to cleanliness and hygiene.',
+      'Good communication skills and ability to work well within a team.',
+      'Flexibility to work evenings, weekends, and holidays as needed.',
+      'Must be able to lift up to 50 pounds and stand for extended periods.',
+    ],
+    benefits: [
+      'Competitive pay.',
+      'Opportunities for advancement within the kitchen team.',
+      'Employee discounts on meals and our range of exclusive Junction 35 spirits.',
+      'A fun and engaging work environment that values hard work and dedication.',
+    ],
   },
   {
     id: 420,
@@ -117,3 +176,6 @@ export const JOBS: Job[] = [
   },
   // Add more job entries as needed
 ];
+
+export const FOOTER =
+  '*GM Management LLC is an equal opportunity employer and values diversity in our workforce. We welcome applicants from all backgrounds.';
