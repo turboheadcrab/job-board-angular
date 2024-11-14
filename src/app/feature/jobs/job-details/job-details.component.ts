@@ -12,7 +12,7 @@ import { switchMap, tap } from 'rxjs';
 
 import type { Job } from '../../../shared/model/job.model';
 import { JobService } from '../../../core/service/job.service';
-import { FOOTER } from '../../../shared/data/job-data';
+import { DISCLAIMER } from '../../../shared/data/job-data';
 
 @Component({
   selector: 'app-job-details',
@@ -41,5 +41,5 @@ export class JobDetailsComponent {
       .subscribe();
   }
 
-  protected readonly FOOTER = FOOTER;
+  protected readonly DISCLAIMER = DISCLAIMER;
 }

@@ -166,6 +166,7 @@ export const JOBS: Job[] = [
     id: 6,
     title: 'Host',
     location: 'Sevier County, TN',
+
     description:
       'GM Management LLC is seeking a friendly and organized Host to join our front-of-house team. As a Host, you will be the first point of contact for our guests, setting the tone for their dining experience. Your role will be crucial in ensuring that our guests feel welcomed, seated promptly, and enjoy their time at the restaurant.',
     responsibilities: [
@@ -194,49 +195,227 @@ export const JOBS: Job[] = [
     ],
   },
   {
-    id: 420,
-    title: 'Software Engineer',
-    department: 'Engineering',
-    location: 'New York, NY',
-    datePosted: new Date('2023-10-01'),
+    id: 7,
+    title: 'Kitchen Manager',
+    department: 'Junction 35',
+    location: 'Sevier County, TN',
     jobType: 'Full-time',
+    about:
+      "Welcome to Junction 35, Tennessee's First Distillery & Restaurant Combined! Here, you can indulge in some of the finest smoked meats and dishes in town while enjoying our award-winning spirits crafted by our resident master distiller, Jake McGinnis. With a rich history rooted in the Great Smoky Mountains, we pay homage to the traditions of those who worked hard as loggers by day and bootleggers by night. Junction 35 is the gathering place for our community, celebrating good food, great spirits, and providing a memorable experience for every visitor.",
     description:
-      'We are looking for a skilled Software Engineer to join our team...',
+      'Junction 35 is seeking a dedicated and experienced Kitchen Manager to oversee our kitchen operations. The ideal candidate will have a strong culinary background paired with leadership skills to ensure exceptional food quality and a smooth kitchen workflow. As the Kitchen Manager, you will be responsible for managing kitchen staff, maintaining inventory, and creating an environment that fosters teamwork and creativity.',
     responsibilities: [
-      'Develop and maintain web applications',
-      'Collaborate with cross-functional teams',
-      'Participate in code reviews',
+      'Supervise and coordinate daily kitchen operations and staffing.',
+      'Oversee the preparation and presentation of menu items to ensure quality and consistency.',
+      'Help develop and implement kitchen policies and procedures that promote food safety and sanitation standards.',
+      'Manage inventory levels conducting regular inventory counts, ordering supplies, and ensuring the kitchen is well stocked and ready for production.',
+      'Analyze inventory data to minimize waste and optimize food costs.',
+      'Train and mentor kitchen staff, providing guidance on food preparation and cooking techniques.',
+      'Assist in menu planning and development, incorporating seasonal ingredients and guest feedback.',
+      'Monitor food costs and labor expenses, making recommendations for improvements.',
+      'Ensure a safe and efficient working environment for all kitchen employees.',
+      'Foster positive communication and collaboration among kitchen and front-of-house staff.',
     ],
     qualifications: [
-      'Bachelor’s degree in Computer Science or related field',
-      '3+ years of experience in software development',
-      'Proficiency in Angular and TypeScript',
+      'Previous experience as a Kitchen Manager or in a similar leadership role in the restaurant industry is required.',
+      'Comprehensive knowledge of culinary techniques and food safety regulations.',
+      'Food safety certification. (ServSafe)',
+      'Strong leadership and team management skills, with the ability to inspire others.',
+      'Excellent organizational and multitasking abilities in a fast-paced environment.',
+      'Flexibility to work varied hours, including evenings, weekends, and holidays.',
     ],
-    salaryRange: '$80,000 - $100,000',
-    benefits: ['Health Insurance', '401(k) Match', 'Paid Time Off'],
+    benefits: [
+      'Competitive salary based on experience.',
+      'Employee discounts on meals and merchandise.',
+      'Paid time off.',
+      'Dental, health, and vision insurance.',
+      'Opportunities for professional development and growth within our expanding brand.',
+      'Supportive and engaging work environment that values teamwork and creativity.',
+    ],
+    footer:
+      'Join us at Junction 35, where every meal creates memories and every sip tells a story!',
   },
   {
-    id: 421,
-    title: 'Marketing Specialist',
-    department: 'Marketing',
-    location: 'Remote',
-    datePosted: new Date('2023-10-05'),
-    jobType: 'Part-time',
+    id: 8,
+    title: 'Line Cook',
+    department: 'Junction 35',
+    location: 'Sevier County, TN',
+    about:
+      "Welcome to Junction 35, Tennessee's First Distillery & Restaurant Combined! Here, you can indulge in some of the finest smoked meats and dishes in town while enjoying our award-winning spirits crafted by our resident master distiller, Jake McGinnis. With a rich history rooted in the Great Smoky Mountains, we pay homage to the traditions of those who worked hard as loggers by day and bootleggers by night. Junction 35 is the gathering place for our community, celebrating good food, great spirits, and providing a memorable experience for every visitor.",
     description:
-      'Seeking a creative Marketing Specialist to enhance our brand...',
+      'We are looking for a talented and dedicated Line Cook to join our culinary team at Junction 35. As a Line Cook, you will be essential in preparing and presenting our Southern dishes, including our legendary smoked meats and signature offerings. You will work in a fast-paced kitchen environment, ensuring that quality and service standards are consistently met.',
     responsibilities: [
-      'Develop marketing campaigns',
-      'Analyze market trends',
-      'Coordinate with the sales team',
+      'Prepare and cook high-quality dishes in accordance with Junction 35’s recipes and standards.',
+      'Operate and maintain kitchen equipment safely and efficiently.',
+      'Ensure all food items are fresh, properly stored, and neatly organized.',
+      'Assist with the timely plating of dishes, paying attention to presentation and quality.',
+      'Collaborate with other kitchen staff to ensure smooth kitchen operations during service.',
+      'Adhere to food safety and sanitation standards to maintain a clean and safe work environment.',
+      'Participate in inventory management and assist with ordering supplies as needed.',
     ],
     qualifications: [
-      'Bachelor’s degree in Marketing or related field',
-      'Experience with digital marketing tools',
-      'Excellent communication skills',
+      'Proven experience as a line cook or in a similar kitchen role.',
+      'Knowledge of cooking techniques, food safety practices, and sanitation guidelines.',
+      'Ability to work efficiently under pressure during busy service periods.',
+      'Strong attention to detail and commitment to delivering high-quality food.',
+      'Excellent teamwork and communication skills.',
+      'Flexibility to work evenings, weekends, and holidays as required.',
+      'Must be able to lift up to 50 pounds and stand for extended periods.',
     ],
+    benefits: [
+      'Competitive pay based on experience.',
+      'Opportunities for growth within the company.',
+      'Employee discounts on meals and our exclusive spirits.',
+      'A fun and engaging work environment surrounded by passionate individuals.',
+    ],
+    footer:
+      'Join us at Junction 35, where every meal is a reason to celebrate and every sip tells a story!',
   },
+  {
+    id: 9,
+    title: 'Restaurant Manager',
+    department: 'Junction 35',
+    location: 'Sevier County, TN',
+    about:
+      "Welcome to Junction 35, Tennessee's First Distillery & Restaurant Combined! Here, you can indulge in some of the finest smoked meats and dishes in town while enjoying our award-winning spirits crafted by our resident master distiller, Jake McGinnis. With a rich history rooted in the Great Smoky Mountains, we pay homage to the traditions of those who worked hard as loggers by day and bootleggers by night. Junction 35 is the gathering place for our community, celebrating good food, great spirits, and providing a memorable experience for every visitor.",
+    description:
+      'Junction 35 is seeking an experienced and proactive Restaurant Manager to lead our front-of-house operations. The ideal candidate will possess excellent leadership skills and a passion for hospitality, ensuring that every guest has a remarkable dining experience. As a Restaurant Manager, you will oversee staff, manage daily operations, and contribute to the continual improvement of our service standards.',
+    responsibilities: [
+      'Lead, train, and supervise front-of-house staff to ensure exceptional service standards.',
+      'Manage daily restaurant operations, including scheduling, labor management, and inventory control.',
+      'Collaborate with kitchen staff to maintain seamless service and address any operational issues.',
+      'Handle customer complaints and feedback, providing effective resolutions to ensure guest satisfaction.',
+      'Monitor and maintain a high level of cleanliness and organization throughout the restaurant.',
+      'Conduct regular staff meetings and training sessions to promote teamwork and continuous improvement.',
+      'Assist in marketing and promotional activities to enhance the restaurant’s visibility and guest engagement.',
+      'Ensure compliance with health, safety, and food handling regulations.',
+    ],
+    qualifications: [
+      'Previous experience as a Restaurant Manager or in a similar leadership role within the hospitality industry.',
+      'Strong leadership and team management skills.',
+      'Excellent communication and interpersonal abilities.',
+      'Ability to work in a fast-paced environment and manage multiple priorities.',
+      'Flexibility to work evenings, weekends, and holidays as needed.',
+      'Knowledge of restaurant management software and point-of-sale systems.',
+    ],
+    benefits: [
+      'Competitive salary based on experience.',
+      'Employee discounts on meals and merchandise.',
+      'Paid time off and health benefits.',
+      'Opportunities for professional development and growth within our expanding brand.',
+      'A supportive and engaging work environment that values teamwork and creativity.',
+    ],
+    footer:
+      'Join us at Junction 35, where every meal creates memories and every sip tells a story!',
+  },
+  {
+    id: 10,
+    title: 'Prep Cook',
+    department: 'Junction 35',
+    location: 'Sevier County, TN',
+    about:
+      "Welcome to Junction 35, Tennessee's First Distillery & Restaurant Combined! Here, you can indulge in some of the finest smoked meats and dishes in town while enjoying our award-winning spirits crafted by our resident master distiller, Jake McGinnis. With a rich history rooted in the Great Smoky Mountains, we pay homage to the traditions of those who worked hard as loggers by day and bootleggers by night. Junction 35 is the gathering place for our community, celebrating good food, great spirits, and providing a memorable experience for every visitor.",
+    description:
+      'As a Prep Cook at Junction 35, you will play a vital role in our kitchen operations, assisting in the preparation of high-quality dishes that delight our guests. You will work closely with our culinary team to ensure that all ingredients are prepped and ready for service, maintaining our standards of excellence.',
+    responsibilities: [
+      'Prepare and chop vegetables, meats, and other ingredients as directed by the head chef or sous chef.',
+      'Measure and mix ingredients according to recipes, ensuring accuracy in portion sizes.',
+      'Maintain cleanliness and organization of the kitchen and prep areas, following health and safety guidelines.',
+      'Assist with inventory management, including checking stock levels and reporting shortages to management.',
+      'Follow proper food handling and sanitation practices to ensure the safety and quality of food items.',
+      'Assist in the assembly of dishes and plate presentations, as required.',
+      'Support other kitchen staff in daily operations, including cleaning and restocking supplies.',
+      'Participate in training and development to improve culinary skills and knowledge.',
+    ],
+    qualifications: [
+      'Previous experience as a prep cook or in a similar role in a restaurant or kitchen setting preferred.',
+      'Basic knowledge of food preparation techniques and kitchen equipment.',
+      'Strong attention to detail and ability to follow recipes and instructions accurately.',
+      'Ability to work efficiently in a fast-paced environment and manage time effectively.',
+      'Strong communication and teamwork skills.',
+      'Must be able to lift up to 50 pounds and stand for extended periods.',
+    ],
+    benefits: [
+      'Competitive pay.',
+      'Opportunities for advancement within the kitchen team.',
+      'Employee discounts on meals and our range of exclusive Junction 35 spirits.',
+      'A fun and engaging work environment that values hard work and dedication.',
+    ],
+    footer:
+      'Join us at Junction 35, where every meal creates memories and every sip tells a story!',
+  },
+  {
+    id: 11,
+    title: 'Sampler',
+    location: 'Sevier County, TN',
+    description:
+      'We are seeking enthusiastic and knowledgeable Liquor Samplers to join our team at Junction 35. As a Sampler, you will be responsible for promoting our selection of spirits by providing tastings and engaging with customers. Your passion for spirits and excellent communication skills will help create an enjoyable experience for our guests while increasing awareness of our offerings.',
+    responsibilities: [
+      'Conduct sampling events for a variety of liquors and spirits, engaging with guests to introduce them to our selections.',
+      'Provide knowledgeable insights about different liquors, including flavor profiles, production methods, and pairings.',
+      'Create a welcoming and friendly atmosphere that encourages guests to try our products.',
+      'Educate customers on the proper tasting techniques and responsible drinking.',
+      'Collaborate with management to plan and execute promotional events and special tastings.',
+      'Maintain cleanliness and organization of the tasting area.',
+      'Ensure compliance with state regulations regarding alcohol sampling and service.',
+      'Collect customer feedback to help refine and improve our offerings.',
+    ],
+    qualifications: [
+      'Previous experience in the food and beverage industry, particularly with liquor or spirits, is preferred.',
+      'Excellent interpersonal skills and a friendly demeanor.',
+      'Ability to engage customers and create an enjoyable experience.',
+      'Must be at least 21 years old and possess a valid TABC alcohol permit.',
+      'Flexible availability, including evenings and weekends, to accommodate busy periods and special events.',
+    ],
+    benefits: [
+      'Competitive pay plus tips.',
+      'Opportunities for growth within the company.',
+      'Employee discounts on meals and our exclusive spirits.',
+      'A fun and engaging work environment surrounded by passionate individuals.',
+    ],
+    footer:
+      'Join us at Junction 35, where every meal creates memories and every sip tells a story!',
+  },
+
+  {
+    id: 12,
+    title: 'Server',
+    department: 'Junction 35',
+    location: 'Sevier County, TN',
+    about:
+      "Welcome to Junction 35, Tennessee's First Distillery & Restaurant Combined! Here, you can indulge in some of the finest smoked meats and dishes in town while enjoying our award-winning spirits crafted by our resident master distiller, Jake McGinnis. With a rich history rooted in the Great Smoky Mountains, we pay homage to the traditions of those who worked hard as loggers by day and bootleggers by night. Junction 35 is the gathering place for our community, celebrating good food, great spirits, and providing a memorable experience for every visitor.",
+    description:
+      'Junction 35 is seeking enthusiastic and personable servers to join our team! As a Server, you will be responsible for providing exceptional customer service while showcasing our delicious Southern dishes and premium spirits. Your ability to create a warm and inviting dining experience will play a key role in making Junction 35 the preferred destination for locals and tourists alike.',
+    responsibilities: [
+      'Greet and welcome guests with a friendly and engaging demeanor.',
+      'Present menus and provide recommendations based on our offerings, including our signature smoked meats and craft cocktails.',
+      'Take accurate food and drink orders and enter them into the POS system.',
+      'Ensure timely and accurate delivery of food and beverages to guests.',
+      "Monitor guests' dining experiences and respond promptly to any requests or concerns.",
+      'Maintain a clean and organized dining area, including clearing and resetting tables.',
+      'Collaborate with kitchen and bar staff to ensure smooth service and guest satisfaction.',
+      'Uphold all food safety and sanitation standards throughout the service.',
+    ],
+    qualifications: [
+      'Previous experience as a server in a restaurant or similar hospitality setting preferred.',
+      'Excellent communication and interpersonal skills.',
+      'Ability to work efficiently in a fast-paced environment while maintaining composure.',
+      'Flexible availability, including nights, weekends, and holidays.',
+      'Must be at least 18 years old and possess a TABC permit for serving alcohol.',
+      'Must be able to lift up to 50 pounds and stand for extended periods.',
+    ],
+    benefits: [
+      'Competitive pay plus tips.',
+      'Opportunities for growth within the company.',
+      'Employee discounts on meals and our exclusive spirits.',
+      'A fun and engaging work environment surrounded by passionate individuals.',
+    ],
+    footer:
+      'Become a part of Junction 35, where every meal creates memories and every sip tells a story!*Junction 35 is an equal opportunity employer. We celebrate diversity and are committed to creating an inclusive environment for all employees.',
+  },
+
   // Add more job entries as needed
 ];
 
-export const FOOTER =
+export const DISCLAIMER =
   '*GM Management LLC is an equal opportunity employer and values diversity in our workforce. We welcome applicants from all backgrounds.';

@@ -10,6 +10,10 @@
   @if (job.datePosted; as datePosted) {
     <p><strong>Date Posted:</strong> {{ datePosted | date }}</p>
   }
+  @if (job.about; as about) {
+    <p><strong>About:</strong></p>
+    <p>{{ about }}</p>
+  }
   <p><strong>Description:</strong></p>
   <p>{{ job.description }}</p>
 
@@ -46,7 +50,11 @@
     </ul>
   }
 
-  <p>{{ FOOTER }}</p>
+  @if (job.footer; as footer) {
+    <p>{{ footer }}</p>
+  }
+
+  <p>{{ DISCLAIMER }}</p>
 
   <button class="btn btn-primary" [routerLink]="['/jobs', id(), 'apply']">
     Apply Now

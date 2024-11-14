@@ -5,6 +5,7 @@ export interface Job {
   location: string;
   datePosted?: Date;
   jobType?: string; // e.g., 'Full-time', 'Part-time', 'Contract'
+  about?: string;
   description: string;
   responsibilities: string[];
   qualifications: string[];
