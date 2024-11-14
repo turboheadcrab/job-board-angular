@@ -4,12 +4,6 @@ export interface Section {
   isRepeatable: boolean;
   questions: Question[];
 }
-
-export interface ShownSection {
-  key: string;
-  questions: Question[];
-}
-
 export interface Question {
   key: string;
   label: string;

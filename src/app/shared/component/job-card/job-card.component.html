@@ -1,7 +1,12 @@
 <div cds-layout="col">
   <h3>{{ job().title }}</h3>
-  <small>{{ job().location }} | {{ job().jobType }}</small>
-  <p>{{ job().description | slice: 0 : 100 }}...</p>
+  <small
+    >{{ job().location }}
+    @if (job().jobType; as jobType) {
+      | {{ jobType }}
+    }
+  </small>
+  <p>{{ job().description | slice: 0 : 200 }}...</p>
   <button class="btn btn-sm btn-link" [routerLink]="['/jobs', job().id]">
     View Details
   </button>

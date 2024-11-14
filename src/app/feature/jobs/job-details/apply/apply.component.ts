@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
+  input,
   Signal,
 } from '@angular/core';
 import { ClrFormsModule } from '@clr/angular';
@@ -32,6 +33,8 @@ export class ApplyComponent {
   #applicationFormService = inject(ApplicationFormService);
 
   applicationFormRecord: FormRecord<FormControl<string>>;
+
+  id = input.required<string>();
 
   sectionTypesKeys: Signal<string[]> =
     this.#applicationFormService.sectionTypesKeys;
