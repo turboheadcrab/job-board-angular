@@ -90,7 +90,7 @@ export const QUESTION_SECTIONS: Section[] = [
       },
       {
         key: 'question8',
-        label: 'What location are you applying to?',
+        label: 'What is your location preference?',
         type: QuestionType.Radio,
         isABranch: false,
         isRequired: true,
@@ -114,59 +114,6 @@ export const QUESTION_SECTIONS: Section[] = [
           {
             key: 'question8option5',
             label: 'Any location',
-          },
-        ],
-      },
-      {
-        key: 'question9',
-        label: 'What position are you applying for?',
-        type: QuestionType.Radio,
-        isABranch: true,
-        isRequired: true,
-        options: [
-          {
-            key: 'question9Option1',
-            label: 'Host',
-          },
-          {
-            key: 'question9Option2',
-            label: 'Busser',
-          },
-          {
-            key: 'question9Option3',
-            label: 'Food Runner',
-          },
-          {
-            key: 'question9Option4',
-            label: 'Server',
-          },
-          {
-            key: 'question9Option5',
-            label: 'Bartender',
-          },
-          {
-            key: 'question9Option6',
-            label: 'Line Cook',
-          },
-          {
-            key: 'question9Option7',
-            label: 'Prep Cook',
-          },
-          {
-            key: 'question9Option8',
-            label: 'Dishwasher',
-          },
-          {
-            key: 'question9Option9',
-            label: 'Distillery Sampler',
-          },
-          {
-            key: 'question9Option10',
-            label: 'Manager',
-          },
-          {
-            key: 'question9Option11',
-            label: 'Any',
           },
         ],
       },

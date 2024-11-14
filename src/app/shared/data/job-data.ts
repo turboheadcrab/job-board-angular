@@ -6,7 +6,6 @@ export const JOBS: Job[] = [
     title: 'Kitchen Manager',
     department: 'Azul Cantina',
     location: 'Pigeon Forge, TN',
-    datePosted: new Date('2024-11-13'),
     jobType: 'Full-time',
     description:
       'Azul Cantina is seeking a dedicated and experienced Kitchen Manager to oversee our kitchen operations. The ideal candidate will have a strong culinary background paired with leadership skills to ensure exceptional food quality and a smooth kitchen workflow. As the Kitchen Manager, you will be responsible for managing kitchen staff, maintaining inventory, and creating an environment that fosters teamwork and creativity.',

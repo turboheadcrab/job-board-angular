@@ -3,7 +3,9 @@
   <p><strong>Department:</strong> {{ job.department }}</p>
   <p><strong>Location:</strong> {{ job.location }}</p>
   <p><strong>Job Type:</strong> {{ job.jobType }}</p>
-  <p><strong>Date Posted:</strong> {{ job.datePosted | date }}</p>
+  @if (job.datePosted; as datePosted) {
+    <p><strong>Date Posted:</strong> {{ datePosted | date }}</p>
+  }
   <p><strong>Description:</strong></p>
   <p>{{ job.description }}</p>
 

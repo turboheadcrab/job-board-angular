@@ -3,8 +3,8 @@ export interface Job {
   title: string;
   department: string;
   location: string;
-  datePosted: Date;
-  jobType: string; // e.g., 'Full-time', 'Part-time', 'Contract'
+  datePosted?: Date;
+  jobType?: string; // e.g., 'Full-time', 'Part-time', 'Contract'
   description: string;
   responsibilities: string[];
   qualifications: string[];
