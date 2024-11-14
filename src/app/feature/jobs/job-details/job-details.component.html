@@ -29,6 +29,17 @@
     </ul>
   }
 
+  @if (job.benefits) {
+    <p><strong>Benefits:</strong></p>
+    <ul>
+      @for (benefit of job.benefits; track $index) {
+        <li>
+          {{ benefit }}
+        </li>
+      }
+    </ul>
+  }
+
   <button class="btn btn-primary" [routerLink]="['/jobs', id(), 'apply']">
     Apply Now
   </button>
