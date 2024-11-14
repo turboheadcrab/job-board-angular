@@ -1,8 +1,12 @@
 @if (job(); as job) {
   <h1 cds-text="display">{{ job.title }}</h1>
-  <p><strong>Department:</strong> {{ job.department }}</p>
+  @if (job.department; as department) {
+    <p><strong>Department:</strong> {{ department }}</p>
+  }
   <p><strong>Location:</strong> {{ job.location }}</p>
-  <p><strong>Job Type:</strong> {{ job.jobType }}</p>
+  @if (job.jobType; as jobType) {
+    <p><strong>Job Type:</strong> {{ jobType }}</p>
+  }
   @if (job.datePosted; as datePosted) {
     <p><strong>Date Posted:</strong> {{ datePosted | date }}</p>
   }
@@ -40,6 +44,10 @@
         </li>
       }
     </ul>
+  }
+
+  @if (job.footer; as footer) {
+    <p>{{ footer }}</p>
   }
 
   <button class="btn btn-primary" [routerLink]="['/jobs', id(), 'apply']">

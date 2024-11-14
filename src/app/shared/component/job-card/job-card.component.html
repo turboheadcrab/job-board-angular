@@ -6,7 +6,7 @@
       | {{ jobType }}
     }
   </small>
-  <p>{{ job().description | slice: 0 : 100 }}...</p>
+  <p>{{ job().description | slice: 0 : 200 }}...</p>
   <button class="btn btn-sm btn-link" [routerLink]="['/jobs', job().id]">
     View Details
   </button>

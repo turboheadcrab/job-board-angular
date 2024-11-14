@@ -2,13 +2,46 @@ import { Job } from '../model/job.model';
 
 export const JOBS: Job[] = [
   {
+    id: 1,
+    title: 'Barback',
+    location: 'Sevier County, TN',
+    description:
+      'As a Barback, you will assist the bartending team in maintaining an efficient and organized bar. Your role is crucial to ensure smooth service by managing inventory, stocking supplies, and helping to keep the bar clean and inviting. We are looking for an individual who is passionate about the hospitality industry and eager to learn and grow within a dynamic team.',
+    responsibilities: [
+      'Assist bartenders with the preparation and batching.',
+      'Stock and replenish supplies, including liquor, mixers, garnishes, glassware, and utensils.',
+      'Maintain cleanliness of the bar area, including wiping down counters, cleaning glassware, and disposing of trash.',
+      'Prepare garnishes, ice, and other necessary ingredients for cocktails and drinks.',
+      'Monitor inventory levels and notify management of shortages or discrepancies.',
+      'Assist in setting up and breaking down the bar before and after shifts.',
+      'Provide excellent customer service by engaging with guests and ensuring their needs are met.',
+      'Follow all health and safety regulations, maintaining a clean and sanitary working environment.',
+    ],
+    qualifications: [
+      'Previous experience as a barback or in a similar role in a fast-paced restaurant or bar setting preferred but not required.',
+      'Strong work ethic and ability to work effectively in a team environment.',
+      'Willingness to learn about beverages, cocktails, and bar operations.',
+      'Excellent communication and interpersonal skills.',
+      'Ability to multitask and stay organized under pressure.',
+      'Flexibility to work evenings, weekends, and holidays as required.',
+      'Must be able to lift up to 50 pounds and stand for extended periods.',
+    ],
+    benefits: [
+      'Competitive pay plus tips.',
+      'Opportunities for growth within the company.',
+      'Employee discounts on meals and merchandise.',
+      'A fun and engaging work environment surrounded by passionate individuals.',
+    ],
+    footer:
+      '*Gm Management LLC is an equal opportunity employer and values diversity in our workforce. We welcome applicants from all backgrounds.\n',
+  },
+  {
     id: 2,
     title: 'Kitchen Manager',
-    department: 'Azul Cantina',
-    location: 'Pigeon Forge, TN',
+    location: 'Sevier County, TN',
     jobType: 'Full-time',
     description:
-      'Azul Cantina is seeking a dedicated and experienced Kitchen Manager to oversee our kitchen operations. The ideal candidate will have a strong culinary background paired with leadership skills to ensure exceptional food quality and a smooth kitchen workflow. As the Kitchen Manager, you will be responsible for managing kitchen staff, maintaining inventory, and creating an environment that fosters teamwork and creativity.',
+      'GM Management LLC is seeking a dedicated and experienced Kitchen Manager to oversee our kitchen operations. The ideal candidate will have a strong culinary background paired with leadership skills to ensure exceptional food quality and a smooth kitchen workflow. As the Kitchen Manager, you will be responsible for managing kitchen staff, maintaining inventory, and creating an environment that fosters teamwork and creativity.',
     responsibilities: [
       'Supervise and coordinate daily kitchen operations and staffing.',
       'Oversee the preparation and presentation of menu items to ensure quality and consistency.',
@@ -27,7 +60,6 @@ export const JOBS: Job[] = [
       'Food safety certification. (ServSafe)',
       'Strong leadership and team management skills, with the ability to inspire others.',
       'Excellent organizational and multitasking abilities in a fast-paced environment.',
-      'A passion for Mexican cuisine and a commitment to quality food preparation.',
       'Flexibility to work varied hours, including evenings, weekends, and holidays.',
     ],
     benefits: [
@@ -38,6 +70,8 @@ export const JOBS: Job[] = [
       'Opportunities for professional development and growth within our expanding brand.',
       'Supportive and engaging work environment that values teamwork and creativity.',
     ],
+    footer:
+      '*GM Management LLC is an equal opportunity employer and values diversity in our workforce. We welcome applicants from all backgrounds.',
   },
   {
     id: 420,
