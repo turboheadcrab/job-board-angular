@@ -15,13 +15,12 @@ import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { tap } from 'rxjs';
 
 @Component({
-  selector: 'app-application-question',
-  standalone: true,
-  imports: [ClarityModule, ReactiveFormsModule, NgxMaskDirective],
-  templateUrl: './application-question.component.html',
-  styleUrl: './application-question.component.scss',
-  providers: provideNgxMask(),
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-application-question',
+    imports: [ClarityModule, ReactiveFormsModule, NgxMaskDirective],
+    templateUrl: './application-question.component.html',
+    styleUrl: './application-question.component.scss',
+    providers: provideNgxMask(),
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ApplicationQuestionComponent {
   #applicationFormService = inject(ApplicationFormService);
