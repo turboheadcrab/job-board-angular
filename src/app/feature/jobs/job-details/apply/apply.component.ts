@@ -17,17 +17,16 @@ import { ApplicationFormService } from '../../../../core/service/application-for
 import { ApplicationSectionComponent } from '../../../../shared/component/application-section/application-section.component';
 
 @Component({
-  selector: 'app-apply',
-  standalone: true,
-  imports: [
-    ClrFormsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ApplicationSectionComponent,
-  ],
-  templateUrl: './apply.component.html',
-  styleUrl: './apply.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-apply',
+    imports: [
+        ClrFormsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ApplicationSectionComponent,
+    ],
+    templateUrl: './apply.component.html',
+    styleUrl: './apply.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ApplyComponent {
   #applicationFormService = inject(ApplicationFormService);

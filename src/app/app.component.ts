@@ -8,19 +8,18 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ThemePreference, ThemeService } from './core/service/theme.service';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    ClrNavigationModule,
-    ClarityModule,
-    RouterLink,
-    RouterLinkActive,
-    RouterOutlet,
-    ClrIconModule,
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-root',
+    imports: [
+        ClrNavigationModule,
+        ClarityModule,
+        RouterLink,
+        RouterLinkActive,
+        RouterOutlet,
+        ClrIconModule,
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   #themeService = inject(ThemeService);
