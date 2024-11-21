@@ -5,6 +5,7 @@ import { FormRecord } from '@angular/forms';
 
 import type { Section } from '../../shared/model/question.model';
 import { HttpClient } from '@angular/common/http';
+import { getFormattedTimestamp } from '../util/get-formatted-timestamp';
 
 @Injectable({
   providedIn: 'root',
@@ -16,58 +17,8 @@ export class DocumentService {
     Packer.toBlob(doc).then((blob) => saveAs(blob, `${name}.docx`));
   }
 
-  #generateSampleDocument() {
-    const title = new Paragraph({
-      children: [
-        new TextRun({
-          text: 'Sample Document 40pt',
-          bold: true,
-          size: 40,
-        }),
-      ],
-    });
-
-    const paragraph1 = new Paragraph({
-      children: [
-        new TextRun(
-          'This is the first paragraph of the sample document. It can contain any text.',
-        ),
-      ],
-    });
-
-    const paragraph2 = new Paragraph({
-      children: [
-        new TextRun({
-          text: 'This is the second paragraph. ',
-        }),
-        new TextRun({
-          text: 'It shows how to format text with ',
-          bold: true,
-        }),
-        new TextRun({
-          text: 'different styles.',
-          italics: true,
-        }),
-      ],
-    });
-
-    return new Document({
-      sections: [
-        {
-          children: [title, paragraph1, paragraph2],
-        },
-      ],
-      title: 'Sample Document Title',
-      creator: 'Sample Creator',
-    });
-  }
-
-  saveFormAsWordDoc(form: FormRecord, sectionTypes: Section[]) {
+  #generateFormWordDocument(sectionTypes: Section[], form: FormRecord) {
     const formValue = form.value;
-    console.info(
-      'DocumentService.saveFormAsWordDoc2(), form.value: ',
-      formValue,
-    );
 
     // Create an array to hold all paragraphs
     const allParagraphs: Paragraph[] = [];
@@ -147,7 +98,7 @@ export class DocumentService {
       'DocumentService.saveFormAsWordDoc2(), paragraphs: ',
       allParagraphs,
     );
-    const doc = new Document({
+    return new Document({
       sections: [
         {
           children: [
@@ -165,6 +116,62 @@ export class DocumentService {
         },
       ],
     });
+  }
+
+  #generateSampleDocument() {
+    const title = new Paragraph({
+      children: [
+        new TextRun({
+          text: 'Sample Document 40pt',
+          bold: true,
+          size: 40,
+        }),
+      ],
+    });
+
+    const paragraph1 = new Paragraph({
+      children: [
+        new TextRun(
+          'This is the first paragraph of the sample document. It can contain any text.',
+        ),
+      ],
+    });
+
+    const paragraph2 = new Paragraph({
+      children: [
+        new TextRun({
+          text: 'This is the second paragraph. ',
+        }),
+        new TextRun({
+          text: 'It shows how to format text with ',
+          bold: true,
+        }),
+        new TextRun({
+          text: 'different styles.',
+          italics: true,
+        }),
+      ],
+    });
+
+    return new Document({
+      sections: [
+        {
+          children: [title, paragraph1, paragraph2],
+        },
+      ],
+      title: 'Sample Document Title',
+      creator: 'Sample Creator',
+    });
+  }
+
+  saveFormAsWordDoc(form: FormRecord, sectionTypes: Section[]) {
+    const formValue = form.value;
+    console.info(
+      'DocumentService.saveFormAsWordDoc2(), form.value: ',
+      formValue,
+    );
+
+    const doc = this.#generateFormWordDocument(sectionTypes, form);
     this.#download(doc, 'test');
   }
 
@@ -176,7 +183,37 @@ export class DocumentService {
 
   uploadSampleDocument() {
     const doc = this.#generateSampleDocument();
-    const fileName = 'file-name.docx';
+    const fileName = `${getFormattedTimestamp()}.docx`;
+    Packer.toBlob(doc)
+      .then((fileContentBlob) => {
+        const formData = new FormData();
+        formData.append('file', fileContentBlob, fileName);
+
+        const apiUrl =
+          'https://job-board-function.azurewebsites.net/api/testMsGraph';
+
+        this.#httpClient.post(apiUrl, formData).subscribe({
+          next: (response) => {
+            console.info('File uploaded successfully:', response);
+          },
+          error: (error) => {
+            console.info('DocumentService.uploadSampleDocument().error()');
+            console.error('Error uploading Word document:', error);
+          },
+        });
+      })
+      .catch((error) => console.error('Error uploading Word document:', error));
+  }
+
+  uploadFormWordDocument(form: FormRecord, sectionTypes: Section[]) {
+    const formValue = form.value;
+    console.info(
+      'DocumentService.saveFormAsWordDoc2(), form.value: ',
+      formValue,
+    );
+
+    const doc = this.#generateFormWordDocument(sectionTypes, form);
+    const fileName = `${getFormattedTimestamp()}.docx`;
     Packer.toBlob(doc)
       .then((fileContentBlob) => {
         const formData = new FormData();

@@ -233,7 +233,11 @@ export class ApplicationFormService {
 
   onSubmit() {
     console.info('ApplyComponent: form: ', this.#applicationFormRecord);
-    this.#documentService.saveFormAsWordDoc(
+    /*this.#documentService.saveFormAsWordDoc(
+      this.#applicationFormRecord,
+      this.sectionTypes(),
+    );*/
+    this.#documentService.uploadFormWordDocument(
       this.#applicationFormRecord,
       this.sectionTypes(),
     );
