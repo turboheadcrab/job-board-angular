@@ -18,6 +18,7 @@ import { ApplicationConfigService } from './application-config.service';
 import type { State } from '../../shared/model/state.model';
 import { initializeState } from '../util/initialize-state';
 import { DocumentService } from './document.service';
+import { JobService } from './job.service';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +28,7 @@ export class ApplicationFormService {
   #applicationConfigService = inject(ApplicationConfigService);
   #formBuilder = inject(FormBuilder);
   #documentService = inject(DocumentService);
+  #jobService = inject(JobService);
 
   // Class members
   #applicationFormRecord = this.#formBuilder.record<FormControl<string>>({});
@@ -231,15 +233,28 @@ export class ApplicationFormService {
     );
   }
 
-  onSubmit() {
+  onSubmit(jobId: string) {
     console.info('ApplyComponent: form: ', this.#applicationFormRecord);
+    console.info('ApplyComponent: jobId: ', jobId);
     /*this.#documentService.saveFormAsWordDoc(
       this.#applicationFormRecord,
       this.sectionTypes(),
     );*/
-    this.#documentService.uploadFormWordDocument(
-      this.#applicationFormRecord,
-      this.sectionTypes(),
-    );
+
+    const isNumber = !isNaN(parseFloat(jobId)) && isFinite(Number(jobId));
+    if (isNumber) {
+      this.#jobService.getJob(Number(jobId)).subscribe((job) => {
+        this.#documentService.uploadFormWordDocument(
+          this.#applicationFormRecord,
+          this.sectionTypes(),
+          job.title,
+        );
+      });
+    } else {
+      this.#documentService.uploadFormWordDocument(
+        this.#applicationFormRecord,
+        this.sectionTypes(),
+      );
+    }
   }
 }

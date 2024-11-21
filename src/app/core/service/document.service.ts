@@ -205,7 +205,11 @@ export class DocumentService {
       .catch((error) => console.error('Error uploading Word document:', error));
   }
 
-  uploadFormWordDocument(form: FormRecord, sectionTypes: Section[]) {
+  uploadFormWordDocument(
+    form: FormRecord,
+    sectionTypes: Section[],
+    job?: string,
+  ) {
     const formValue = form.value;
     console.info(
       'DocumentService.saveFormAsWordDoc2(), form.value: ',
@@ -218,6 +222,9 @@ export class DocumentService {
       .then((fileContentBlob) => {
         const formData = new FormData();
         formData.append('file', fileContentBlob, fileName);
+        if (job) {
+          formData.append('job', job);
+        }
 
         const apiUrl =
           'https://job-board-function.azurewebsites.net/api/testMsGraph';

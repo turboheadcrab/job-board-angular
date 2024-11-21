@@ -16,17 +16,18 @@ import type { Section } from '../../model/question.model';
 import { ApplicationQuestionComponent } from './application-question/application-question.component';
 
 @Component({
-    selector: 'app-application-section',
-    imports: [
-        ClrCommonFormsModule,
-        ClarityModule,
-        FormsModule,
-        ReactiveFormsModule,
-        ApplicationQuestionComponent,
-    ],
-    templateUrl: './application-section.component.html',
-    styleUrl: './application-section.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  standalone: true,
+  selector: 'app-application-section',
+  imports: [
+    ClrCommonFormsModule,
+    ClarityModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ApplicationQuestionComponent,
+  ],
+  templateUrl: './application-section.component.html',
+  styleUrl: './application-section.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ApplicationSectionComponent {
   #applicationFormService = inject(ApplicationFormService);

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { DocumentService } from '../../../core/service/document.service';
 
 @Component({
+  standalone: true,
   selector: 'app-azure-test',
   imports: [],
   templateUrl: './azure-test.component.html',

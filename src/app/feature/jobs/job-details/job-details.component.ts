@@ -15,11 +15,12 @@ import { JobService } from '../../../core/service/job.service';
 import { DISCLAIMER } from '../../../shared/data/job-data';
 
 @Component({
-    selector: 'app-job-details',
-    imports: [DatePipe, RouterLink],
-    templateUrl: './job-details.component.html',
-    styleUrl: './job-details.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  standalone: true,
+  selector: 'app-job-details',
+  imports: [DatePipe, RouterLink],
+  templateUrl: './job-details.component.html',
+  styleUrl: './job-details.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class JobDetailsComponent {
   #jobService = inject(JobService);

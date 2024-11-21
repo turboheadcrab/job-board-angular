@@ -12,6 +12,7 @@ import { JobCardComponent } from '../../shared/component/job-card/job-card.compo
 import { JobService } from '../../core/service/job.service';
 
 @Component({
+  standalone: true,
   selector: 'app-jobs',
   imports: [JobCardComponent],
   templateUrl: './jobs.component.html',
