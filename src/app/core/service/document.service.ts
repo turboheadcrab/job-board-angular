@@ -9,6 +9,10 @@ import type { Section } from '../../shared/model/question.model';
   providedIn: 'root',
 })
 export class DocumentService {
+  #download(doc: Document, name: string): void {
+    Packer.toBlob(doc).then((blob) => saveAs(blob, `${name}.docx`));
+  }
+
   saveFormAsWordDoc(form: FormRecord, sectionTypes: Section[]) {
     const formValue = form.value;
     console.info(
@@ -112,10 +116,53 @@ export class DocumentService {
         },
       ],
     });
-    this.#download(doc);
+    this.#download(doc, 'test');
   }
 
-  #download(doc: Document): void {
-    Packer.toBlob(doc).then((blob) => saveAs(blob, 'test.docx'));
+  saveSampleDocument() {
+    const title = new Paragraph({
+      children: [
+        new TextRun({
+          text: 'Sample Document',
+          bold: true,
+          size: 40,
+        }),
+      ],
+    });
+
+    const paragraph1 = new Paragraph({
+      children: [
+        new TextRun(
+          'This is the first paragraph of the sample document. It can contain any text.',
+        ),
+      ],
+    });
+
+    const paragraph2 = new Paragraph({
+      children: [
+        new TextRun({
+          text: 'This is the second paragraph. ',
+        }),
+        new TextRun({
+          text: 'It shows how to format text with ',
+          bold: true,
+        }),
+        new TextRun({
+          text: 'different styles.',
+          italics: true,
+        }),
+      ],
+    });
+
+    const doc = new Document({
+      sections: [
+        {
+          children: [title, paragraph1, paragraph2],
+        },
+      ],
+      title: 'Sample Document',
+    });
+
+    this.#download(doc, 'sample');
   }
 }
