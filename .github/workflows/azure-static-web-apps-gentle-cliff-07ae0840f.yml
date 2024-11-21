@@ -15,27 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      # Step 1: Checkout the repository
       - uses: actions/checkout@v3
         with:
           submodules: true
           lfs: false
-
-      # Step 2: Set up Node.js environment
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-
-      # Step 3: Install dependencies with legacy-peer-deps
-      - name: Install Dependencies
-        run: npm install --legacy-peer-deps
-
-      # Step 4: Build the Angular application
-      - name: Build Angular App
-        run: npm run build --prod
-
-      # Step 5: Deploy to Azure Static Web Apps
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
