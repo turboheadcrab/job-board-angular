@@ -8,9 +8,8 @@ describe('AzureTestComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AzureTestComponent]
-    })
-    .compileComponents();
+      imports: [AzureTestComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AzureTestComponent);
     component = fixture.componentInstance;

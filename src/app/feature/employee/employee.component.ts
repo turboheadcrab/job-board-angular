@@ -3,6 +3,7 @@ import { ClrAlertModule } from '@clr/angular';
 import { AzureTestComponent } from '../../shared/component/azure-test/azure-test.component';
 
 @Component({
+  standalone: true,
   selector: 'app-employee',
   imports: [ClrAlertModule, AzureTestComponent],
   templateUrl: './employee.component.html',
