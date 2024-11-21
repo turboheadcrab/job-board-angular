@@ -14,22 +14,18 @@ export class AzureTestComponent {
   callAzureFunction() {
     const functionUrl =
       'https://job-board-function.azurewebsites.net/api/testfunctiontrigger';
-    this.#httpClient
-      .get(functionUrl, {
-        responseType: 'text',
-      })
-      .subscribe({
-        next: (response) => {
-          console.info(
-            'AzureTestComponent.callAzureFunction() response:',
-            response,
-          );
-          this.responseMessage.set(response);
-        },
-        error: (error) => {
-          console.info('AzureTestComponent.callAzureFunction() error:', error);
-          this.responseMessage.set('Error');
-        },
-      });
+    this.#httpClient.get<{ message: string }>(functionUrl).subscribe({
+      next: (response) => {
+        console.info(
+          'AzureTestComponent.callAzureFunction() response:',
+          response,
+        );
+        this.responseMessage.set(response.message);
+      },
+      error: (error) => {
+        console.info('AzureTestComponent.callAzureFunction() error:', error);
+        this.responseMessage.set('Error');
+      },
+    });
   }
 }
