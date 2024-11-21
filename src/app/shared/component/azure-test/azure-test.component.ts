@@ -35,4 +35,8 @@ export class AzureTestComponent {
   saveSampleDocument() {
     this.#documentService.saveSampleDocument();
   }
+
+  uploadSampleDocument() {
+    this.#documentService.uploadSampleDocument();
+  }
 }

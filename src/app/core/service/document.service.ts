@@ -1,16 +1,65 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 import { saveAs } from 'file-saver';
 import { FormRecord } from '@angular/forms';
 
 import type { Section } from '../../shared/model/question.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DocumentService {
+  #httpClient = inject(HttpClient);
+
   #download(doc: Document, name: string): void {
     Packer.toBlob(doc).then((blob) => saveAs(blob, `${name}.docx`));
+  }
+
+  #generateSampleDocument() {
+    const title = new Paragraph({
+      children: [
+        new TextRun({
+          text: 'Sample Document 40pt',
+          bold: true,
+          size: 40,
+        }),
+      ],
+    });
+
+    const paragraph1 = new Paragraph({
+      children: [
+        new TextRun(
+          'This is the first paragraph of the sample document. It can contain any text.',
+        ),
+      ],
+    });
+
+    const paragraph2 = new Paragraph({
+      children: [
+        new TextRun({
+          text: 'This is the second paragraph. ',
+        }),
+        new TextRun({
+          text: 'It shows how to format text with ',
+          bold: true,
+        }),
+        new TextRun({
+          text: 'different styles.',
+          italics: true,
+        }),
+      ],
+    });
+
+    return new Document({
+      sections: [
+        {
+          children: [title, paragraph1, paragraph2],
+        },
+      ],
+      title: 'Sample Document Title',
+      creator: 'Sample Creator',
+    });
   }
 
   saveFormAsWordDoc(form: FormRecord, sectionTypes: Section[]) {
@@ -120,49 +169,32 @@ export class DocumentService {
   }
 
   saveSampleDocument() {
-    const title = new Paragraph({
-      children: [
-        new TextRun({
-          text: 'Sample Document',
-          bold: true,
-          size: 40,
-        }),
-      ],
-    });
-
-    const paragraph1 = new Paragraph({
-      children: [
-        new TextRun(
-          'This is the first paragraph of the sample document. It can contain any text.',
-        ),
-      ],
-    });
-
-    const paragraph2 = new Paragraph({
-      children: [
-        new TextRun({
-          text: 'This is the second paragraph. ',
-        }),
-        new TextRun({
-          text: 'It shows how to format text with ',
-          bold: true,
-        }),
-        new TextRun({
-          text: 'different styles.',
-          italics: true,
-        }),
-      ],
-    });
-
-    const doc = new Document({
-      sections: [
-        {
-          children: [title, paragraph1, paragraph2],
-        },
-      ],
-      title: 'Sample Document',
-    });
+    const doc = this.#generateSampleDocument();
 
     this.#download(doc, 'sample');
+  }
+
+  uploadSampleDocument() {
+    const doc = this.#generateSampleDocument();
+    const fileName = 'file-name.docx';
+    Packer.toBlob(doc)
+      .then((fileContentBlob) => {
+        const formData = new FormData();
+        formData.append('file', fileContentBlob, fileName);
+
+        const apiUrl =
+          'https://job-board-function.azurewebsites.net/api/testMsGraph';
+
+        this.#httpClient.post(apiUrl, formData).subscribe({
+          next: (response) => {
+            console.info('File uploaded successfully:', response);
+          },
+          error: (error) => {
+            console.info('DocumentService.uploadSampleDocument().error()');
+            console.error('Error uploading Word document:', error);
+          },
+        });
+      })
+      .catch((error) => console.error('Error uploading Word document:', error));
   }
 }
