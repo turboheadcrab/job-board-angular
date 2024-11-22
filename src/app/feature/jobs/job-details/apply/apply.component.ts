@@ -1,11 +1,18 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  effect,
   inject,
   input,
+  signal,
   Signal,
 } from '@angular/core';
-import { ClrFormsModule } from '@clr/angular';
+import {
+  ClrButtonModule,
+  ClrFormsModule,
+  ClrLoadingModule,
+  ClrLoadingState,
+} from '@clr/angular';
 import {
   FormControl,
   FormRecord,
@@ -24,6 +31,8 @@ import { ApplicationSectionComponent } from '../../../../shared/component/applic
     FormsModule,
     ReactiveFormsModule,
     ApplicationSectionComponent,
+    ClrButtonModule,
+    ClrLoadingModule,
   ],
   templateUrl: './apply.component.html',
   styleUrl: './apply.component.scss',
@@ -39,15 +48,20 @@ export class ApplyComponent {
   sectionTypesKeys: Signal<string[]> =
     this.#applicationFormService.sectionTypesKeys;
 
+  submitBtnState = signal<ClrLoadingState>(ClrLoadingState.DEFAULT);
+  submitBtnStateEffect = effect(() =>
+    console.log('Submit button state changed:', this.submitBtnState()),
+  );
+
   constructor() {
     this.applicationFormRecord =
       this.#applicationFormService.getApplicationFormRecord();
-    this.applicationFormRecord.valueChanges.subscribe((value) =>
+    /*this.applicationFormRecord.valueChanges.subscribe((value) =>
       console.info('ApplyComponent: valueChanges:', value),
     );
     this.applicationFormRecord.statusChanges.subscribe((status) =>
       console.info('ApplyComponent: statusChanges:', status),
-    );
+    );*/
 
     console.info(
       'ApplyComponent.constructor(): form',
@@ -64,6 +78,9 @@ export class ApplyComponent {
   }
 
   onSubmit() {
+    this.submitBtnState.set(ClrLoadingState.LOADING);
     this.#applicationFormService.onSubmit(this.id());
   }
+
+  protected readonly ClrLoadingState = ClrLoadingState;
 }
