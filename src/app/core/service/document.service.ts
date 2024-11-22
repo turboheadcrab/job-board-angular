@@ -234,7 +234,7 @@ export class DocumentService {
             console.info('File uploaded successfully:', response);
           },
           error: (error) => {
-            console.info('DocumentService.uploadSampleDocument().error()');
+            console.info('DocumentService.uploadFormWordDocument().error()');
             console.error('Error uploading Word document:', error);
           },
         });
