@@ -13,12 +13,16 @@
       </button>
     }
   }
-  <button
-    class="btn btn-primary"
-    type="submit"
-    [disabled]="applicationFormRecord.invalid"
-    [clrLoading]="submitBtnState()"
-  >
-    Submit Application
-  </button>
+  @if (submitBtnState() === ClrLoadingState.DEFAULT) {
+    <button
+      class="btn btn-primary"
+      type="submit"
+      [disabled]="applicationFormRecord.invalid"
+      [clrLoading]="submitBtnState()"
+    >
+      Submit Application
+    </button>
+  } @else {
+    <p>Submitted!</p>
+  }
 </form>
