@@ -2,9 +2,9 @@ import { inject, Injectable } from '@angular/core';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 import { saveAs } from 'file-saver';
 import { FormRecord } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 import type { Section } from '../../shared/model/question.model';
-import { HttpClient } from '@angular/common/http';
 import { getFormattedTimestamp } from '../util/get-formatted-timestamp';
 
 @Injectable({
@@ -99,6 +99,7 @@ export class DocumentService {
       allParagraphs,
     );
     return new Document({
+      creator: this.#extractApplicantName(form),
       sections: [
         {
           children: [
@@ -164,6 +165,17 @@ export class DocumentService {
     });
   }
 
+  #extractApplicantName(form: FormRecord) {
+    let formValue = form.value;
+    const firstName = formValue['section1_0_question1'] || '';
+    const lastName = formValue['section1_0_question2'] || '';
+    let applicantName = 'Unknown Author';
+    if (firstName || lastName) {
+      applicantName = `${firstName || ''} ${lastName || ''}`.trim();
+    }
+    return applicantName;
+  }
+
   saveFormAsWordDoc(form: FormRecord, sectionTypes: Section[]) {
     const formValue = form.value;
     console.info(
@@ -217,7 +229,13 @@ export class DocumentService {
     );
 
     const doc = this.#generateFormWordDocument(sectionTypes, form);
-    const fileName = `${getFormattedTimestamp()}.docx`;
+
+    const timestamp = getFormattedTimestamp();
+    const sanitizedJobTitle = job ? job.replace(/\s/g, '_') : '';
+    const applicantName = this.#extractApplicantName(form).replace(/\s/g, '_');
+    const fileName = sanitizedJobTitle
+      ? `${sanitizedJobTitle}-${timestamp}-${applicantName}.docx`
+      : `${timestamp}-${applicantName}.docx`;
     Packer.toBlob(doc)
       .then((fileContentBlob) => {
         const formData = new FormData();
