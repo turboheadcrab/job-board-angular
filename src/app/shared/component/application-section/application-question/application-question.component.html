@@ -22,6 +22,7 @@
             {{ helperText }}
           </clr-control-helper>
         }
+        <clr-control-error>Please provide a valid value</clr-control-error>
       </clr-input-container>
     }
     @case (QuestionType.Tel) {
@@ -49,11 +50,17 @@
             {{ helperText }}
           </clr-control-helper>
         }
+        <clr-control-error>Please enter a valid phone number</clr-control-error>
       </clr-input-container>
     }
     @case (QuestionType.Email) {
       <clr-input-container>
-        <label [for]="question.key">{{ question.label }}</label>
+        <label
+          [for]="question.key"
+          [class.clr-required-mark]="question.isRequired"
+        >
+          {{ question.label }}
+        </label>
         <input
           clrInput
           type="email"
@@ -69,13 +76,18 @@
           </clr-control-helper>
         }
         <clr-control-error>
-          Error message that appears after focus is lost and control is invalid
+          Please enter a valid email address
         </clr-control-error>
       </clr-input-container>
     }
     @case (QuestionType.Radio) {
       <clr-radio-container>
-        <label [for]="fieldKey()">{{ question.label }}</label>
+        <label
+          [for]="fieldKey()"
+          [class.clr-required-mark]="question.isRequired"
+        >
+          {{ question.label }}
+        </label>
         @for (option of question.options; track option.key) {
           <clr-radio-wrapper>
             <input
@@ -94,14 +106,17 @@
             {{ helperText }}
           </clr-control-helper>
         }
-        <clr-control-error>
-          Error message that appears after focus is lost and control is invalid
-        </clr-control-error>
+        <clr-control-error>Please select an option</clr-control-error>
       </clr-radio-container>
     }
     @case (QuestionType.TextArea) {
       <clr-textarea-container>
-        <label [for]="fieldKey()">{{ question.label }}</label>
+        <label
+          [for]="fieldKey()"
+          [class.clr-required-mark]="question.isRequired"
+        >
+          {{ question.label }}
+        </label>
         <textarea
           clrTextarea
           [id]="fieldKey()"
@@ -115,11 +130,17 @@
             {{ helperText }}
           </clr-control-helper>
         }
+        <clr-control-error>Please provide a valid response</clr-control-error>
       </clr-textarea-container>
     }
     @case (QuestionType.Date) {
       <clr-date-container>
-        <label [for]="question.key">{{ question.label }}</label>
+        <label
+          [for]="question.key"
+          [class.clr-required-mark]="question.isRequired"
+        >
+          {{ question.label }}
+        </label>
         <input
           clrDate
           type="date"
@@ -128,6 +149,7 @@
           [formControl]="getControl(fieldKey())"
           [required]="question.isRequired"
           [placeholder]="question.placeholder ?? ''"
+          [min]="getMinDate()"
         />
         @if (question.helperText; as helperText) {
           <clr-control-helper>

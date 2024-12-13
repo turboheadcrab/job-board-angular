@@ -57,5 +57,9 @@ export class ApplicationQuestionComponent {
     return this.#applicationFormService.getControl(fieldKey);
   }
 
+  getMinDate() {
+    return new Date().toISOString().split('T')[0];
+  }
+
   protected readonly QuestionType = QuestionType;
 }

@@ -161,8 +161,6 @@ export class ApplicationFormService {
   }
 
   getQuestion(sectionKey: string, questionKey: string) {
-    const fieldKey = `${sectionKey}_${questionKey}`;
-    console.info('ApplicationFormService.getQuestion: fieldKey', fieldKey);
     const foundSectionType = this.sectionTypes().find((section: Section) =>
       sectionKey.startsWith(section.key),
     );
@@ -179,7 +177,6 @@ export class ApplicationFormService {
   }
 
   getControl(fieldKey: string): FormControl<string> {
-    console.info('ApplicationFormService.getControl: fieldKey', fieldKey);
     return this.#applicationFormRecord.get(fieldKey) as FormControl<string>;
   }
 
