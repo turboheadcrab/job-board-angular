@@ -21,7 +21,6 @@ export const QUESTION_SECTIONS: Section[] = [
         type: QuestionType.Text,
         isRequired: true,
         isABranch: false,
-
         placeholder: 'Doe',
         helperText: 'Enter your last name',
       },
@@ -30,18 +29,18 @@ export const QUESTION_SECTIONS: Section[] = [
         label: 'Phone Number',
         type: QuestionType.Tel,
         isABranch: false,
-
         isRequired: true,
         placeholder: '+1 (555) 555-5555',
+        helperText: 'Enter your phone number',
       },
       {
         key: 'question4',
         label: 'Email',
         type: QuestionType.Email,
         isABranch: false,
-
         isRequired: true,
         placeholder: 'email@example.com',
+        helperText: 'Enter your email',
       },
       {
         key: 'question5',
@@ -66,7 +65,6 @@ export const QUESTION_SECTIONS: Section[] = [
         label: 'Are you willing to submit to a background check?',
         type: QuestionType.Radio,
         isABranch: false,
-
         isRequired: true,
         options: [
           {
@@ -169,6 +167,7 @@ export const QUESTION_SECTIONS: Section[] = [
         type: QuestionType.Date,
         isABranch: false,
         isRequired: true,
+        helperText: 'Select the date you are available to start working',
       },
     ],
   },
@@ -252,6 +251,189 @@ export const QUESTION_SECTIONS: Section[] = [
   },
   {
     key: 'section3',
+    label: 'What is your availability?',
+    isRepeatable: false,
+    questions: [
+      {
+        key: 'question1',
+        label: 'Monday',
+        type: QuestionType.Radio,
+        isRequired: true,
+        isABranch: false,
+        options: [
+          {
+            key: 'question1Option1',
+            label: 'AM',
+          },
+          {
+            key: 'question1Option2',
+            label: 'PM',
+          },
+          {
+            key: 'question1Option3',
+            label: 'Any',
+          },
+          {
+            key: 'question1Option4',
+            label: 'N/A',
+          },
+        ],
+      },
+      {
+        key: 'question2',
+        label: 'Tuesday',
+        type: QuestionType.Radio,
+        isRequired: true,
+        isABranch: false,
+        options: [
+          {
+            key: 'question2Option1',
+            label: 'AM',
+          },
+
+          {
+            key: 'question2Option2',
+            label: 'PM',
+          },
+          {
+            key: 'question2Option3',
+            label: 'Any',
+          },
+          {
+            key: 'question2Option4',
+            label: 'N/A',
+          },
+        ],
+      },
+      {
+        key: 'question3',
+        label: 'Wednesday',
+        type: QuestionType.Radio,
+        isRequired: true,
+        isABranch: false,
+        options: [
+          {
+            key: 'question3Option1',
+            label: 'AM',
+          },
+          {
+            key: 'question3Option2',
+            label: 'PM',
+          },
+          {
+            key: 'question3Option3',
+            label: 'Any',
+          },
+          {
+            key: 'question3Option4',
+            label: 'N/A',
+          },
+        ],
+      },
+      {
+        key: 'question4',
+        label: 'Thursday',
+        type: QuestionType.Radio,
+        isRequired: true,
+        isABranch: false,
+        options: [
+          {
+            key: 'question4Option1',
+            label: 'AM',
+          },
+          {
+            key: 'question4Option2',
+            label: 'PM',
+          },
+          {
+            key: 'question4Option3',
+            label: 'Any',
+          },
+          {
+            key: 'question4Option4',
+            label: 'N/A',
+          },
+        ],
+      },
+      {
+        key: 'question5',
+        label: 'Friday',
+        type: QuestionType.Radio,
+        isRequired: true,
+        isABranch: false,
+        options: [
+          {
+            key: 'question5Option1',
+            label: 'AM',
+          },
+          {
+            key: 'question5Option2',
+            label: 'PM',
+          },
+          {
+            key: 'question5Option3',
+            label: 'Any',
+          },
+          {
+            key: 'question5Option4',
+            label: 'N/A',
+          },
+        ],
+      },
+      {
+        key: 'question6',
+        label: 'Saturday',
+        type: QuestionType.Radio,
+        isRequired: true,
+        isABranch: false,
+        options: [
+          {
+            key: 'question6Option1',
+            label: 'AM',
+          },
+          {
+            key: 'question6Option2',
+            label: 'PM',
+          },
+          {
+            key: 'question6Option3',
+            label: 'Any',
+          },
+          {
+            key: 'question6Option4',
+            label: 'N/A',
+          },
+        ],
+      },
+      {
+        key: 'question7',
+        label: 'Sunday',
+        type: QuestionType.Radio,
+        isRequired: true,
+        isABranch: false,
+        options: [
+          {
+            key: 'question7Option1',
+            label: 'AM',
+          },
+          {
+            key: 'question7Option2',
+            label: 'PM',
+          },
+          {
+            key: 'question7Option3',
+            label: 'Any',
+          },
+          {
+            key: 'question7Option4',
+            label: 'N/A',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    key: 'section4',
     label: 'Anything else you would like to share?',
     isRepeatable: false,
     questions: [
