@@ -107,7 +107,7 @@ export const QUESTION_SECTIONS: Section[] = [
           },
           {
             key: 'question8option4',
-            label: 'Red Rooster',
+            label: 'The Cottage',
           },
           {
             key: 'question8option5',
