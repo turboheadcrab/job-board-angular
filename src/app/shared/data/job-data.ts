@@ -355,6 +355,34 @@ export const JOBS: Job[] = [
       'A fun and engaging work environment surrounded by passionate individuals.',
     ],
   },
+  {
+    id: 13,
+    title: 'Busser',
+    location: 'Sevier County, TN',
+    description: `As a busser, you’ll be a behind-the-scenes hero—keeping our dining areas clean, organized, and ready to impress. Your hustle and attention to detail help create the kind of seamless service that keeps guests coming back`,
+    responsibilities: [
+      'Quickly and efficiently clear, clean, and reset tables between guests.',
+      'Ensure that dining and service areas remain tidy, well-stocked, and organized at all times.',
+      'Work closely with hosts, servers, foodrunners and dishwashers to maintain smooth service flow.',
+      'Help set up and break down dining areas before and after shifts.',
+      'Maintain cleanliness standards throughout the restaurant, including restrooms and guest areas.',
+      'Support the overall guest experience with a positive attitude and team-focused mindset.',
+    ],
+    qualifications: [
+      'No experience? No problem—we’re happy to train motivated, hard-working individuals.',
+      'Strong work ethic and the ability to move quickly and efficiently in a fast-paced environment.',
+      'A team player who’s reliable, flexible, and ready to jump in where needed.',
+      'High attention to cleanliness, safety, and detail.',
+      'Able to lift up to 50 lbs and be on your feet for extended periods.',
+      'Available to work evenings, weekends, and holidays as needed.',
+    ],
+    benefits: [
+      'Competitive pay',
+      'Opportunities for growth and advancement within a fast growing company',
+      'Employee discounts on food and merchandise',
+      'A fast-paced, fun, and welcoming work environment that values teamwork and hustle',
+    ],
+  },
 
   // Add more job entries as needed
 ];
