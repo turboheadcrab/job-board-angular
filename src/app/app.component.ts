@@ -24,7 +24,6 @@ import { ThemePreference, ThemeService } from './core/service/theme.service';
 })
 export class AppComponent {
   #themeService = inject(ThemeService);
-  title = 'job-board-angular';
 
   setPreferredTheme(theme: ThemePreference) {
     console.info('AppComponent.setPreferredTheme() theme:', theme);
