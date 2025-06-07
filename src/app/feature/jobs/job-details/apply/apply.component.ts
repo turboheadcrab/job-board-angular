@@ -24,19 +24,18 @@ import { ApplicationFormService } from '../../../../core/service/application-for
 import { ApplicationSectionComponent } from '../../../../shared/component/application-section/application-section.component';
 
 @Component({
-  standalone: true,
-  selector: 'app-apply',
-  imports: [
-    ClrFormsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ApplicationSectionComponent,
-    ClrButtonModule,
-    ClrLoadingModule,
-  ],
-  templateUrl: './apply.component.html',
-  styleUrl: './apply.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-apply',
+    imports: [
+        ClrFormsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ApplicationSectionComponent,
+        ClrButtonModule,
+        ClrLoadingModule,
+    ],
+    templateUrl: './apply.component.html',
+    styleUrl: './apply.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ApplyComponent {
   #applicationFormService = inject(ApplicationFormService);
