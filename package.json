@@ -37,7 +37,7 @@
     "@angular/compiler-cli": "^19.2.14",
     "@types/jasmine": "~5.1.5",
     "angular-eslint": "18.4.1",
-    "docx": "^9.1.1",
+    "docx": "^9.5.0",
     "eslint": "^9.19.0",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.4",
