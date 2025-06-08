@@ -1,6 +1,5 @@
 import { inject, Injectable } from '@angular/core';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
-import { saveAs } from 'file-saver';
 import { FormRecord } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
@@ -12,10 +11,6 @@ import { getFormattedTimestamp } from '../util/get-formatted-timestamp';
 })
 export class DocumentService {
   #httpClient = inject(HttpClient);
-
-  #download(doc: Document, name: string): void {
-    Packer.toBlob(doc).then((blob) => saveAs(blob, `${name}.docx`));
-  }
 
   #generateFormWordDocument(sectionTypes: Section[], form: FormRecord) {
     const formValue = form.value;
@@ -174,23 +169,6 @@ export class DocumentService {
       applicantName = `${firstName || ''} ${lastName || ''}`.trim();
     }
     return applicantName;
-  }
-
-  saveFormAsWordDoc(form: FormRecord, sectionTypes: Section[]) {
-    const formValue = form.value;
-    console.info(
-      'DocumentService.saveFormAsWordDoc2(), form.value: ',
-      formValue,
-    );
-
-    const doc = this.#generateFormWordDocument(sectionTypes, form);
-    this.#download(doc, 'test');
-  }
-
-  saveSampleDocument() {
-    const doc = this.#generateSampleDocument();
-
-    this.#download(doc, 'sample');
   }
 
   uploadSampleDocument() {
