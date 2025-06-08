@@ -11,6 +11,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
     "prettier:write": "prettier . --write"
   },
   "private": true,
@@ -36,9 +37,9 @@
     "@angular/cli": "^19.2.14",
     "@angular/compiler-cli": "^19.2.14",
     "@types/jasmine": "~5.1.5",
-    "angular-eslint": "18.4.1",
+    "angular-eslint": "20.0.0",
     "docx": "^9.5.0",
-    "eslint": "^9.19.0",
+    "eslint": "^9.28.0",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.4",
     "karma-chrome-launcher": "~3.2.0",
@@ -46,8 +47,8 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ngx-mask": "^18.0.4",
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.3",
     "typescript": "~5.8.3",
-    "typescript-eslint": "8.10.0"
+    "typescript-eslint": "^8.33.1"
   }
 }

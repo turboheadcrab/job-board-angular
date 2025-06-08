@@ -161,7 +161,7 @@ export class DocumentService {
   }
 
   #extractApplicantName(form: FormRecord) {
-    let formValue = form.value;
+    const formValue = form.value;
     const firstName = formValue['section1_0_question1'] || '';
     const lastName = formValue['section1_0_question2'] || '';
     let applicantName = 'Unknown Author';
