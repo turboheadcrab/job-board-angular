@@ -1,6 +1,5 @@
 import { inject, Injectable } from '@angular/core';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
-import { saveAs } from 'file-saver';
 import { FormRecord } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
@@ -12,10 +11,6 @@ import { getFormattedTimestamp } from '../util/get-formatted-timestamp';
 })
 export class DocumentService {
   #httpClient = inject(HttpClient);
-
-  #download(doc: Document, name: string): void {
-    Packer.toBlob(doc).then((blob) => saveAs(blob, `${name}.docx`));
-  }
 
   #generateFormWordDocument(sectionTypes: Section[], form: FormRecord) {
     const formValue = form.value;
@@ -166,7 +161,7 @@ export class DocumentService {
   }
 
   #extractApplicantName(form: FormRecord) {
-    let formValue = form.value;
+    const formValue = form.value;
     const firstName = formValue['section1_0_question1'] || '';
     const lastName = formValue['section1_0_question2'] || '';
     let applicantName = 'Unknown Author';
@@ -174,23 +169,6 @@ export class DocumentService {
       applicantName = `${firstName || ''} ${lastName || ''}`.trim();
     }
     return applicantName;
-  }
-
-  saveFormAsWordDoc(form: FormRecord, sectionTypes: Section[]) {
-    const formValue = form.value;
-    console.info(
-      'DocumentService.saveFormAsWordDoc2(), form.value: ',
-      formValue,
-    );
-
-    const doc = this.#generateFormWordDocument(sectionTypes, form);
-    this.#download(doc, 'test');
-  }
-
-  saveSampleDocument() {
-    const doc = this.#generateSampleDocument();
-
-    this.#download(doc, 'sample');
   }
 
   uploadSampleDocument() {
